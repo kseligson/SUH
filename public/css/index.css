@@ -1,0 +1,43 @@
+html, body { 
+  background: url("../img/bg.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#page-title {
+	color: white;
+	text-align: center;
+	padding-top: 150px;
+	font-size: 100px;
+}
+
+#page-subtitle {
+	color: white;
+	font-size: 25px;
+	text-align: center;
+}
+
+hr {
+	width: 700px;
+}
+
+.button{
+  margin-top: 65px;
+  display: block;
+  width: 180px;
+  height: 70px;
+  font-size: 20px;
+  color: #fff;
+  line-height: 60px;
+  text-align: center;
+  border-style: solid;
+  border-width: 2px;
+  text-decoration: none;
+}
+
+.button:hover {
+  text-decoration: none;
+  color: #fff;
+}

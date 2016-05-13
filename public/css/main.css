@@ -1,0 +1,111 @@
+.left-form {
+	height: 100%;
+	background: rgba(77,98,167,0.7);
+	position: fixed;
+	width: 250px;
+	left: 0;
+	overflow-y: auto;
+	z-index: 1000;
+	padding: 20px;
+}
+
+label {
+	color: white;
+}
+
+#submitBtn {
+}
+
+#btnArea {
+	padding-top: 10px;
+}
+
+#market-form {
+	bottom: 0;
+	padding-top: 50px;
+}
+
+.font-white {
+	color: white;
+}
+
+.bg-dark {
+	background: rgba(65,84,132,0.7);
+}
+
+#logo {
+	margin-top: 10px;
+	width: 250px;
+	left: 0;
+	overflow-y: auto;
+	z-index: 1000;
+	position: fixed;
+	height: 50px;
+}
+
+#description {
+	padding-top: 100px;
+}
+
+.center {
+	text-align: center;
+}
+
+.title {
+	font-size: 35px;
+}
+
+#about {
+	padding-top: 300px;
+}
+
+.button{
+  margin-top: 65px;
+  display: block;
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
+  line-height: 45px;
+  border-style: solid;
+  border-width: 2px;
+  text-decoration: none;
+  color: #fff;
+}
+
+#page-title {
+	color: white;
+	text-align: center;
+	padding-top: 150px;
+	font-size: 100px;
+}
+
+#page-subtitle {
+	color: white;
+	font-size: 25px;
+	text-align: center;
+}
+
+hr {
+	width: 700px;
+}
+
+.button:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.buttonTitle {
+	padding-top: 50px;
+}
+
+#landingBtn {
+	margin-top: 20px;
+	width: 180px;
+	height: 70px;
+	line-height: 60px;
+}
+
+.no-deco:hover {
+	text-decoration: none;
+	color: #fff;
+}
