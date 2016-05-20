@@ -7,6 +7,38 @@
   <link href='https://fonts.googleapis.com/css?family=Cinzel+Decorative|Averia+Serif+Libre:300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/css/main.css">
   <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Work',     11],
+        ['Eat',      2],
+        ['Commute',  2],
+        ['Watch TV', 2],
+        ['Sleep',    7]
+      ]);
+
+      var options = {
+        title: 'My Daily Activities',
+        titleColor: 'white',
+        pieHole: 0.85,
+        pieSliceBorderColor: 'transparent',
+        pieSliceTextStyle: { color: 'transparent',},
+        backgroundColor: { fill:'transparent' },
+        chartArea: {'width': '90%', 'height': '80%'},
+        legend: {'position': 'bottom'},
+        legendTextStyle: {color:'#fff'},
+        colors: ['#ffc966', '#ffd27f', '#ffdb99', '#ffe4b2', '#ffedcc']
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+      chart.draw(data, options);
+    }
+  </script>
   <style>
     #map {
       height: calc(100vh);
@@ -26,7 +58,7 @@
         <form id="market-form">
           <div class="form-group">
             <select class="form-control" id="region-select">
-              <option></option>
+              <option>San Diego</option>
               <option>La Jolla</option>
               <option>2</option>
               <option>3</option>
@@ -42,9 +74,11 @@
 
       <div class="font-white center" id="about">about | help</div>
     </div>
-    <div class="right-form">
 
+    <div class="right-form">
+      <div id="donutchart" style="width: 400px; height: 500px;"></div>
     </div>
+
     <div id="map"></div>
   </div>
   <script src="./js/overlay.js"></script>
