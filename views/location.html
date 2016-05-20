@@ -42,12 +42,14 @@
   <style>
     #map {
       height: calc(100vh);
+      width: calc(100vw - 700px);
+      margin-left: 250px;
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
+
     <div class="left-form">
       <div class="bg-dark title font-white center" id="logo"><a class="font-white no-deco" href="/">SUH DUDE</a></div>
       <p class="font-white center" id="description">
@@ -80,7 +82,7 @@
     </div>
 
     <div id="map"></div>
-  </div>
+
   <script src="./js/overlay.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
