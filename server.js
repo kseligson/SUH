@@ -15,7 +15,8 @@ dotenv.load();
 var router = {
   index: require("./routes/index"),
   location: require("./routes/location"),
-  idea: require("./routes/idea")
+  idea: require("./routes/idea"),
+  map: require("./routes/map")
 };
 
 //connect to database
@@ -49,6 +50,7 @@ app.set('port', process.env.PORT || 3000);
 app.get('/', router.index.view);
 app.get('/findout', router.idea.view);
 app.get('/getaclue', router.location.view);
+app.get('/map', router.map.view);
 
 app.get('/delphidata', function (req, res) {
   // TODO
@@ -56,8 +58,8 @@ app.get('/delphidata', function (req, res) {
   // that will be displayed on the D3 visualization
   // Table: Smoking Prevalance in Adults
   // Task: In the year 2003, retrieve the total number of respondents
-  // for each gender. 
-  // Display that data using D3 with gender on the x-axis and 
+  // for each gender.
+  // Display that data using D3 with gender on the x-axis and
   // total respondents on the y-axis.
   client.query("SELECT gender, number_of_respondents FROM cogs121_16_raw.cdph_smoking_prevalence_in_adults_1984_2013 WHERE year = 2003 ",function(err,data){
       res.json(data.rows);
