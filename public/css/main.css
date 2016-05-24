@@ -69,7 +69,7 @@ label {
 }
 
 #about {
-	padding-top: 300px;
+	padding-top: 250px;
 }
 
 .button{
@@ -121,4 +121,10 @@ hr {
 .no-deco:hover {
 	text-decoration: none;
 	color: #fff;
+}
+
+#map {
+	height: calc(100vh);
+	width: calc(100vw - 700px);
+	margin-left: 250px;
 }
