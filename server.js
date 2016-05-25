@@ -12,20 +12,13 @@ var app = express();
 //client id and client secret here, taken from .env (which you need to create)
 dotenv.load();
 
-var router = {
-  index: require("./routes/index"),
-  location: require("./routes/location"),
-  idea: require("./routes/idea"),
-  map: require("./routes/map")
-};
-
 //connect to database
 var conString = process.env.DATABASE_CONNECTION_URL;
 
 var client = new pg.Client(conString);
 client.connect(function(err) {
   if(err) {
-    console.error('could not connet', err);
+    console.error('could not connect', err);
   }
   else {
     console.log("Successfully connected");
@@ -47,10 +40,18 @@ app.use(session({ secret: 'keyboard cat',
 app.set('port', process.env.PORT || 3000);
 
 //routes
-app.get('/', router.index.view);
-app.get('/findout', router.idea.view);
-app.get('/getaclue', router.location.view);
-app.get('/map', router.map.view);
+app.get('/', function(req, res) {
+  res.render('index');
+});
+app.get('/findout', function(req, res) {
+  res.render('idea');
+});
+app.get('/getaclue', function(req, res) {
+  res.render('location');
+});
+app.get('/map', function(req, res) {
+  res.render('map');
+});
 
 app.get('/delphidata', function (req, res) {
   // TODO
