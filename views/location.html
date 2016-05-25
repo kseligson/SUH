@@ -87,5 +87,12 @@
   <script src="./c3/c3.min.js"></script>
   <script src="./js/c3-donut.js"></script>
 
+  <script>
+    $('#submitBtn').click(function(e) {
+      var region = $('#region-select').val();
+      $('#chart-title').text(region);
+    });
+  </script>
+
 </body>
 </html>
