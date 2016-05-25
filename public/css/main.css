@@ -128,3 +128,7 @@ hr {
 	width: calc(100vw - 700px);
 	margin-left: 250px;
 }
+
+#default-text {
+	padding-top: 50%;
+}
