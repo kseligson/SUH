@@ -33,7 +33,7 @@ label {
 	padding-top: 10px;
 }
 
-#market-form {
+.market-form {
 	bottom: 0;
 	padding-top: 50px;
 }
@@ -44,6 +44,26 @@ label {
 
 .bg-dark {
 	background: rgba(65,84,132,0.7);
+}
+
+.chart-font {
+	font-weight: 300;
+	font-size: 35px;
+	padding-top: 5px;
+}
+
+.bg-dark-chart {
+	background: rgba(65,84,132,0.7);
+}
+
+#chart-title {
+	margin-top: 10px;
+	width: 450px;
+	right: 0;
+	overflow-y: auto;
+	z-index: 1000;
+	position: fixed;
+	height: 50px;
 }
 
 #logo {

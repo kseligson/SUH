@@ -20,7 +20,7 @@
       </p>
 
       <div id="form-area">
-        <form id="market-form">
+        <form class="market-form">
           <div class="form-group">
             <select class="form-control" id="region-select">
               <option>San Diego</option>
@@ -39,7 +39,21 @@
     </div>
 
     <div class="right-form">
-      <div id="chart"></div>
+      <h1 class="bg-dark-chart chart-font font-white center" id="chart-title">CHART TITLE</h1>
+      <div id="chart" style="margin-top: 75px;"></div>
+      <div>
+        <form class="market-form">
+          <div class="form-group">
+            <select class="form-control">
+              <option>Income</option>
+              <option>Race</option>
+              <option>Gender</option>
+              <option>Age</option>
+              <option>Exependitures</option>
+            </select>
+          </div>
+        </form>
+      </div>
     </div>
 
     <div id="map"></div>
@@ -71,6 +85,7 @@
   <!-- Load d3.js and c3.js -->
   <script src="./c3/d3.v3.min.js" charset="utf-8"></script>
   <script src="./c3/c3.min.js"></script>
-  <script src="./js/donutdata.js"></script>
+  <script src="./js/c3-donut.js"></script>
+
 </body>
 </html>
