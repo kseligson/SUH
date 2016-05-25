@@ -12,20 +12,13 @@ var app = express();
 //client id and client secret here, taken from .env (which you need to create)
 dotenv.load();
 
-var router = {
-  index: require("./routes/index"),
-  location: require("./routes/location"),
-  idea: require("./routes/idea"),
-  map: require("./routes/map")
-};
-
 //connect to database
 var conString = process.env.DATABASE_CONNECTION_URL;
 
 var client = new pg.Client(conString);
 client.connect(function(err) {
   if(err) {
-    console.error('could not connet', err);
+    console.error('could not connect', err);
   }
   else {
     console.log("Successfully connected");
@@ -47,10 +40,18 @@ app.use(session({ secret: 'keyboard cat',
 app.set('port', process.env.PORT || 3000);
 
 //routes
-app.get('/', router.index.view);
-app.get('/findout', router.idea.view);
-app.get('/getaclue', router.location.view);
-app.get('/map', router.map.view);
+app.get('/', function(req, res) {
+  res.render('index');
+});
+app.get('/findout', function(req, res) {
+  res.render('idea');
+});
+app.get('/getaclue', function(req, res) {
+  res.render('location');
+});
+app.get('/map', function(req, res) {
+  res.render('map');
+});
 
 app.get('/delphidata', function (req, res) {
   // TODO
@@ -65,6 +66,28 @@ app.get('/delphidata', function (req, res) {
       res.json(data.rows);
   });
   //return { delphidata: "No data present." }
+});
+
+app.get('/demographics_age', function(req, res) {
+  //SELECT "Area", "Total 2012 Population" as "total", "Population 0-4" as "zero_to_4", "Population 15-24" as "fifteen_to_24", "Population 25-44" as "twentyfive_to_44", "Population 65+" as "sixtyfiveplus" FROM cogs121_16_raw.hhsa_san_diego_demographics_county_population_2012
+
+  client.query("SELECT \"Area\", \"Total 2012 Population\" as \"total\", \"Population 0-4\" as \"zero_to_4\"" +
+                ",\"Population 15-24\" as \"fifteen_to_24\", \"Population 25-44\" as \"twentyfive_to_44\"" +
+                ",\"Population 65+\" as \"sixtyfiveplus\" FROM cogs121_16_raw.hhsa_san_diego_demographics_county_population_2012",
+  // client.query("select \"Area\", 100*(\"no vehicle available\"*1.0 / \"total households (occupied housing units)\")" +
+  //   " as \"percent\"" +
+  //   " from cogs121_16_raw.hhsa_san_diego_demographics_vehicle_availability_2012" +
+  //   " where 100*(\"no vehicle available\"*1.0 / \"total households (occupied housing units)\") = (" +
+  //   "select MAX( 100*(\"no vehicle available\"*1.0 / \"total households (occupied housing units)\")) as \"percent\" from cogs121_16_raw.hhsa_san_diego_demographics_vehicle_availability_2012)",
+                function(err, data) {
+    res.json(data.rows);
+  });
+  // var query = "select \"Area\", 100*(\"no vehicle available\"*1.0 / \"total households (occupied housing units)\")" +
+  //   " as \"percent\"" +
+  //   " from cogs121_16_raw.hhsa_san_diego_demographics_vehicle_availability_2012" +
+  //   " where 100*(\"no vehicle available\"*1.0 / \"total households (occupied housing units)\") = (" +
+  //   "select MAX( 100*(\"no vehicle available\"*1.0 / \"total households (occupied housing units)\")) as \"percent\" from cogs121_16_raw.hhsa_san_diego_demographics_vehicle_availability_2012)";
+
 });
 
 
