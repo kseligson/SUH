@@ -7,6 +7,8 @@
   <link href='https://fonts.googleapis.com/css?family=Cinzel+Decorative|Averia+Serif+Libre:300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/css/main.css">
   <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Load c3.css -->
+  <link href="/c3/c3.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -37,7 +39,7 @@
     </div>
 
     <div class="right-form">
-      <div id="donutchart" style="width: 400px; height: 500px;"></div>
+      <div id="chart"></div>
     </div>
 
     <div id="map"></div>
@@ -60,43 +62,30 @@
       </div>
     </div>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
-    google.charts.load("current", {packages:["corechart"]});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Day'],
-        ['Work',     11],
-        ['Eat',      2],
-        ['Commute',  2],
-        ['Watch TV', 2],
-        ['Sleep',    7]
-      ]);
-
-      var options = {
-        title: 'My Daily Activities',
-        titleColor: 'white',
-        pieHole: 0.85,
-        pieSliceBorderColor: 'transparent',
-        pieSliceTextStyle: { color: 'transparent',},
-        backgroundColor: { fill:'transparent' },
-        chartArea: {'width': '90%', 'height': '80%'},
-        legend: {'position': 'bottom'},
-        legendTextStyle: {color:'#fff'},
-        colors: ['#ffc966', '#ffd27f', '#ffdb99', '#ffe4b2', '#ffedcc']
-      };
-
-      var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-      chart.draw(data, options);
-    }
-  </script>
-
   <script src="./js/overlay.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
   <script src="./js/d3.min.js"></script>
+  <!-- Load d3.js and c3.js -->
+  <script src="./c3/d3.v3.min.js" charset="utf-8"></script>
+  <script src="./c3/c3.min.js"></script>
+  <script>
+  var chart = c3.generate({
+    data: {
+        columns: [
+            ['data1', 30],
+            ['data2', 120],
+        ],
+        type : 'donut',
+        onclick: function (d, i) { console.log("onclick", d, i); },
+        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+    },
+    donut: {
+        title: "Iris Petal Width"
+    }
+}); </script>
 </body>
 </html>
