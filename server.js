@@ -67,6 +67,28 @@ app.get('/delphidata', function (req, res) {
   //return { delphidata: "No data present." }
 });
 
+app.get('/demographics_age', function(req, res) {
+  //SELECT "Area", "Total 2012 Population" as "total", "Population 0-4" as "zero_to_4", "Population 15-24" as "fifteen_to_24", "Population 25-44" as "twentyfive_to_44", "Population 65+" as "sixtyfiveplus" FROM cogs121_16_raw.hhsa_san_diego_demographics_county_population_2012
+
+  client.query("SELECT \"Area\", \"Total 2012 Population\" as \"total\", \"Population 0-4\" as \"zero_to_4\"" +
+                ",\"Population 15-24\" as \"fifteen_to_24\", \"Population 25-44\" as \"twentyfive_to_44\"" +
+                ",\"Population 65+\" as \"sixtyfiveplus\" FROM cogs121_16_raw.hhsa_san_diego_demographics_county_population_2012",
+  // client.query("select \"Area\", 100*(\"no vehicle available\"*1.0 / \"total households (occupied housing units)\")" +
+  //   " as \"percent\"" +
+  //   " from cogs121_16_raw.hhsa_san_diego_demographics_vehicle_availability_2012" +
+  //   " where 100*(\"no vehicle available\"*1.0 / \"total households (occupied housing units)\") = (" +
+  //   "select MAX( 100*(\"no vehicle available\"*1.0 / \"total households (occupied housing units)\")) as \"percent\" from cogs121_16_raw.hhsa_san_diego_demographics_vehicle_availability_2012)",
+                function(err, data) {
+    res.json(data.rows);
+  });
+  // var query = "select \"Area\", 100*(\"no vehicle available\"*1.0 / \"total households (occupied housing units)\")" +
+  //   " as \"percent\"" +
+  //   " from cogs121_16_raw.hhsa_san_diego_demographics_vehicle_availability_2012" +
+  //   " where 100*(\"no vehicle available\"*1.0 / \"total households (occupied housing units)\") = (" +
+  //   "select MAX( 100*(\"no vehicle available\"*1.0 / \"total households (occupied housing units)\")) as \"percent\" from cogs121_16_raw.hhsa_san_diego_demographics_vehicle_availability_2012)";
+
+});
+
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));

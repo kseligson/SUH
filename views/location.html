@@ -71,21 +71,6 @@
   <!-- Load d3.js and c3.js -->
   <script src="./c3/d3.v3.min.js" charset="utf-8"></script>
   <script src="./c3/c3.min.js"></script>
-  <script>
-  var chart = c3.generate({
-    data: {
-        columns: [
-            ['data1', 30],
-            ['data2', 120],
-        ],
-        type : 'donut',
-        onclick: function (d, i) { console.log("onclick", d, i); },
-        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
-    },
-    donut: {
-        title: "Iris Petal Width"
-    }
-}); </script>
+  <script src="./js/donutdata.js"></script>
 </body>
 </html>
