@@ -1,12 +1,10 @@
 function initMap() {
-  var mapDiv = document.getElementById('map');
-  var map = new google.maps.Map(mapDiv, {
-    center: {lat: 32.9185, lng: -117.266},
-      //{lat: 32.7157, lng: -117.1611},
-      //32.987052, -117.275426
-      //32.949346, -117.266761
-      //32.9185, -117.1382
-    zoom: 10
+  var map = new google.maps.Map(d3.select("#map").node(), {
+    zoom: 9,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    center: new google.maps.LatLng(32.9185, -117.266),
+    streetViewControl: false,
+    styles: [{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]}]
   });
 
   map.data.loadGeoJson('./json/county2.json');
@@ -15,8 +13,21 @@ function initMap() {
     strokeWeight: 1
   });
 
+  var infoWindow = new google.maps.InfoWindow();
+
   map.data.addListener('mouseover', function(event) {
     map.data.revertStyle();
     map.data.overrideStyle(event.feature, {fillColor: 'black'});
+    infoWindow.setContent("<div>" + event.feature.H.NAME + "</div>");
+    infoWindow.setPosition(event.latLng);
+    infoWindow.open(map);
+  });
+
+  map.data.addListener('mouseout', function(event) {
+    map.data.revertStyle();
+  });
+
+  map.data.addListener('click', function(event) {
+    console.log(event);
   });
 }
