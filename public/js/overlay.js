@@ -145,17 +145,10 @@ function initMap() {
     strokeWeight: 1
   });
 
-  var infoWindow = new google.maps.InfoWindow();
-
   map.data.addListener('mouseover', function(event) {
     map.data.revertStyle();
     map.data.overrideStyle(event.feature, {fillColor: 'black'});
-
-    selectRegion(event.feature.getProperty('NAME'));
-
-    infoWindow.setContent("<div>" + event.feature.H.NAME + "</div>");
-    infoWindow.setPosition(event.latLng);
-    infoWindow.open(map);
+    $("#location-name").text(event.feature.getProperty('NAME'));
   });
 
   map.data.addListener('mouseout', function(event) {
@@ -163,6 +156,6 @@ function initMap() {
   });
 
   map.data.addListener('click', function(event) {
-    console.log(event);
+    selectRegion(event.feature.getProperty('NAME'));
   });
 }
