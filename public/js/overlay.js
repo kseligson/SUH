@@ -148,11 +148,11 @@ function initMap() {
   map.data.addListener('mouseover', function(event) {
     map.data.revertStyle();
     map.data.overrideStyle(event.feature, {fillColor: 'black'});
-    $("#location-name").text(event.feature.getProperty('NAME'));
+    $("#location-name").text(event.feature.getProperty('NAME').toLowerCase());
   });
 
   map.data.addListener('mouseout', function(event) {
-    map.data.revertStyle();
+    //map.data.revertStyle();
   });
 
   map.data.addListener('click', function(event) {
