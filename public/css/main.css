@@ -89,7 +89,9 @@ label {
 }
 
 #about {
-	padding-top: 250px;
+	position: absolute;
+	bottom: 5px;
+	left: 85px;
 }
 
 .button{
@@ -154,4 +156,18 @@ hr {
 	height: calc(100vh);
 	width: calc(100vw - 700px);
 	margin-left: 250px;
+}
+
+#location-name {
+	width: 200px;
+	height: 30px;
+	background-color: rgb(77,98,167);
+	line-height: 30px;
+	padding-left: 10px;
+}
+
+.over-map {
+	position: absolute;
+	left: 275px;
+	top: 300px;
 }

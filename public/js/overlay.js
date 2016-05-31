@@ -18,8 +18,12 @@ function initMap() {
   map.data.addListener('mouseover', function(event) {
     map.data.revertStyle();
     map.data.overrideStyle(event.feature, {fillColor: 'black'});
-    infoWindow.setContent("<div>" + event.feature.H.NAME + "</div>");
-    infoWindow.setPosition(event.latLng);
+
+    var contentString = event.feature.H.NAME.toLowerCase();
+    console.log($(".over-map"));
+    $(".over-map").text(event.feature.H.NAME);
+    infoWindow.setContent(contentString);
+    infoWindow.setPosition(new google.maps.LatLng(event.latLng.lat() + .005, event.latLng.lng()));
     infoWindow.open(map);
   });
 
