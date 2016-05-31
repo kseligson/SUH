@@ -95,7 +95,7 @@ app.get('/ranks', function(req,res) {
   var query = "select \"Area\", 100*(\"no vehicle available\"*1.0 / \"total households (occupied housing units)\") as \"percent\"" +
               "from cogs121_16_raw.hhsa_san_diego_demographics_vehicle_availability_2012 order by \"percent\" desc";
   client.query(query, function(err, dat){
-    client.end();
+    // client.end();
     res.json(dat.rows);
   });
 
