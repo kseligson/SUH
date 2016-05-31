@@ -1,5 +1,5 @@
-html, body { 
-  background: url("../img/bg.jpg") no-repeat center center fixed; 
+html, body {
+  background: url("../img/bg.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -16,6 +16,7 @@ html, body {
 #page-subtitle {
 	color: white;
 	font-size: 25px;
+  font-weight: 300;
 	text-align: center;
 }
 
