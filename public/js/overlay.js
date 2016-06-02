@@ -2,7 +2,7 @@
  * Initialization
  */
 var ageData = {};
-var ageChart;
+var ageChart, ageBar;
 var regionName = "";
 
 $(document).ready(function() {
@@ -39,6 +39,10 @@ function initAgeData(callback) {
   // Initialize age chart
   ageChart = c3.generate({
     bindto: '#ageChart',
+    // size: {
+    //   height: 400,
+    //   width: 400
+    // },
     data: {
       // iris data from R
       columns: [ // default data is Coastal
@@ -53,7 +57,34 @@ function initAgeData(callback) {
       transition: null
     },
     donut: {
-      title: "Age of Population"
+      title: "Ratio for Population Age"
+    }
+  });
+
+  ageBar = c3.generate({
+    bindto: '#ageBar',
+    data: {
+        columns: [
+          ["0-4", 2489],
+          ["5-14", 5171],
+          ["15-24", 11046],
+          ["25-44", 27951],
+          ["45-64", 16501],
+          ["65+", 12735],
+        ],
+        type: 'bar'
+    },
+    bar: {
+        width: 50 // this makes bar width 100px
+    },
+    axis: {
+        x: {
+            type: 'category',
+            categories: ['']
+        },
+        y: {
+            label: 'Number of People'
+        }
     }
   });
 
@@ -76,6 +107,18 @@ function updateAgeData(name, callback) {
   });
   console.log('HELLLLLLOO', region);
   ageChart.load({
+    columns: [
+      ["0-4", region.zero_to_4],
+      ["5-14", region.five_to_14],
+      ["15-24", region.fifteen_to_24],
+      ["25-44", region.twentyfive_to_44],
+      ["45-64", region.fortyfive_to_64],
+      ["65+", region.sixtyfiveplus],
+    ],
+    unload: ageChart.columns,
+  });
+
+  ageBar.load({
     columns: [
       ["0-4", region.zero_to_4],
       ["5-14", region.five_to_14],
