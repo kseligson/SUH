@@ -3,17 +3,9 @@
  */
 var ageData = {};
 var ageChart;
+var regionName = "";
 
 $(document).ready(function() {
-  // Add loading animation
-  $('.right-form')
-      .before('<div class="loading">' +
-      '<div class="sk-spinner sk-spinner-three-bounce">' +
-      '<div class="sk-bounce1"></div>' +
-      '<div class="sk-bounce2"></div>' +
-      '<div class="sk-bounce3"></div>' +
-      '</div>' +
-      '</div>');
 
   async.parallel(
     [
@@ -28,11 +20,19 @@ $(document).ready(function() {
   });
 });
 
+// Capitalize the first letter of each word
+String.prototype.capitalize = function(){
+      //  return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );
+       return this.replace(/([^ -])([^ -]*)/gi,function(v,v1,v2){ return v1.toUpperCase()+v2; } );
+      };
+
 /**
  * Load and process age data
  */
 function initAgeData(callback) {
-  $.get('/demographics_age', function(items) {
+
+  $.getJSON('/json/demographics.json', function(items) {
+    console.log('age', items);
     ageData = items;
   });
 
@@ -41,69 +41,51 @@ function initAgeData(callback) {
     bindto: '#ageChart',
     data: {
       // iris data from R
-      columns: [
+      columns: [ // default data is Coastal
+        ["0-4", 2489],
+        ["5-14", 5171],
+        ["15-24", 11046],
+        ["25-44", 27951],
+        ["45-64", 16501],
+        ["65+", 12735],
       ],
-      type : 'pie',
+      type : 'donut',
       transition: null
+    },
+    donut: {
+      title: "Age of Population"
     }
   });
 
   callback(null, true);
 }
 
-/**
- * Fetch age data
- * @param name
- * @returns {*}
- */
-function getAgeData(name) {
-  return _.filter(ageData, function(item) {
-    if(item.neighborhoods instanceof Array) {
-      for (var i = 0; i < item.neighborhoods.length; i++) {
-        if (item.neighborhoods[i] === name)
-          return true;
-      }
-    }
-    return false;
-  });
+function getRegionName(region) {
+  regionName = region;
 }
 
-/**
- * Update age data chart
- */
 function updateAgeData(name, callback) {
-  var regions = getAgeData(name);
+  var regionData = ageData;
+  var region;
 
-  if(!regions)
-  {
-    ageChart.unload();
-    ageChart.load({ columns: ['Data Unavailable', 1]});
-  }
-
-  // Get populations of each age group and average
-  var segments = ['0-4', '5-14', '15-24', '25-44', '45-64', '65+'];
-  var segmentAvg = [];
-  for (var i = 0; i < segments.length; i++) {
-    // Select the segment
-    var segment = _.filter(regions, {Age: segments[i]});
-
-    // Define the segment
-    var result = [];
-    result.push(segments[i]);
-
-    for (var j = 0; j < segment.length; j++) {
-      result.push(segment[j].Population);
+  // get data from demographics JSON
+  ageData.map(function (elem) {
+    if (elem.Area == name) {
+      region = elem;
     }
-
-    segmentAvg.push(result);
-  }
-
-  // Switch out data
-  ageChart.load({
-    columns: segmentAvg
   });
-
-  callback(null);
+  console.log('HELLLLLLOO', region);
+  ageChart.load({
+    columns: [
+      ["0-4", region.zero_to_4],
+      ["5-14", region.five_to_14],
+      ["15-24", region.fifteen_to_24],
+      ["25-44", region.twentyfive_to_44],
+      ["45-64", region.fortyfive_to_64],
+      ["65+", region.sixtyfiveplus],
+    ],
+    unload: ageChart.columns,
+  });
 }
 
 /**
@@ -112,14 +94,11 @@ function updateAgeData(name, callback) {
 function selectRegion(name) {
   // Display region name
   $('#chart-title').html(name);
-  console.log('ageChart', ageChart);
 
   $.get('/demographics_age', function(items) {
     ageData = items;
     console.log('inside!');
   });
-
-  console.log('ageData', JSON.stringify(ageData));
 
   async.applyEach(
     [updateAgeData],
@@ -148,7 +127,7 @@ function initMap() {
   map.data.addListener('mouseover', function(event) {
     map.data.revertStyle();
     map.data.overrideStyle(event.feature, {fillColor: 'black'});
-    $("#location-name").text(event.feature.getProperty('NAME').toLowerCase());
+    $("#location-name").text(event.feature.getProperty('NAME').toLowerCase().capitalize());
   });
 
   map.data.addListener('mouseout', function(event) {
@@ -156,6 +135,8 @@ function initMap() {
   });
 
   map.data.addListener('click', function(event) {
-    selectRegion(event.feature.getProperty('NAME'));
+    console.log('event', event.feature.getProperty('NAME'));
+    console.log('event-lowercase', event.feature.getProperty('NAME').toLowerCase().capitalize());
+    selectRegion(event.feature.getProperty('NAME').toLowerCase().capitalize());
   });
 }

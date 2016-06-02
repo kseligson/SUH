@@ -71,8 +71,8 @@ app.get('/delphidata', function (req, res) {
 app.get('/demographics_age', function(req, res) {
   //SELECT "Area", "Total 2012 Population" as "total", "Population 0-4" as "zero_to_4", "Population 15-24" as "fifteen_to_24", "Population 25-44" as "twentyfive_to_44", "Population 65+" as "sixtyfiveplus" FROM cogs121_16_raw.hhsa_san_diego_demographics_county_population_2012
 
-  client.query("SELECT \"Area\", \"Total 2012 Population\" as \"total\", \"Population 0-4\" as \"zero_to_4\"" +
-                ",\"Population 15-24\" as \"fifteen_to_24\", \"Population 25-44\" as \"twentyfive_to_44\"" +
+  client.query("SELECT \"Area\", \"Total 2012 Population\" as \"total\", \"Population 0-4\" as \"zero_to_4\", \"Population 5-14\" as \"five_to_14\"" +
+                ",\"Population 15-24\" as \"fifteen_to_24\", \"Population 25-44\" as \"twentyfive_to_44\", \"Population 45-65\" as \"fortyfour_to_64\" " +
                 ",\"Population 65+\" as \"sixtyfiveplus\" FROM cogs121_16_raw.hhsa_san_diego_demographics_county_population_2012",
   // client.query("select \"Area\", 100*(\"no vehicle available\"*1.0 / \"total households (occupied housing units)\")" +
   //   " as \"percent\"" +
