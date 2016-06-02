@@ -12,7 +12,7 @@
 </head>
 
 <body>
-
+<!--
     <div class="left-form">
       <div class="bg-dark title font-white center" id="logo"><a class="font-white no-deco" href="/">SUH DUDE</a></div>
       <p class="font-white center" id="description">
@@ -36,48 +36,55 @@
 
       <div class="font-white center" id="about">about | <a class="font-white no-deco" data-toggle="modal" data-target="#helpModal" href="#">help</a></div>
     </div>
-
-    <div class="right-form">
-      <h1 class="bg-dark chart-font font-white center" id="chart-title">Coastal</h1>
-
-      <!-- <br><br><br><br> -->
-
-      <!-- <small>Average Median Price / Square Feet</small>
-      <div class="progress">
-          <div id="price-bar" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
-            <span class="sr-only"></span>
-        </div>
+-->
+    <div class="left-form">
+      <div class="bg-dark title font-white center" id="logo"><a class="font-white no-deco" href="/">SUH DUDE</a></div>
+      <div id="abouthelp">
+        <a href="#">About</a> | <a href="#" data-toggle="modal" data-target="#helpModal">Help</a>
       </div>
-      <small>Population Density</small>
-      <div class="progress">
-        <div id="population-bar" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
-          <span class="sr-only"></span>
-        </div>
-      </div>
-      -->
+      <div style="margin-top: 10px;">
+        <h1 class="bg-dark chart-font font-white center" id="chart-title">Coastal</h1>
 
-      <div>
-        <form class="market-form">
-          <p class="font-white" style="font-size: 20px; margin-bottom: -5px;">Data Set</p>
-          <div class="form-group">
-            <select class="form-control">
-              <option>Age</option>
-              <option>Race</option>
-              <option>Gender</option>
-              <option>Income</option>
-              <option>Expenditures</option>
-            </select>
+        <!-- <br><br><br><br> -->
+
+        <!-- <small>Average Median Price / Square Feet</small>
+        <div class="progress">
+            <div id="price-bar" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+              <span class="sr-only"></span>
           </div>
-        </form>
+        </div>
+        <small>Population Density</small>
+        <div class="progress">
+          <div id="population-bar" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+            <span class="sr-only"></span>
+          </div>
+        </div>
+        -->
+
+        <div>
+          <form class="market-form">
+            <br>
+            <p class="font-white" style="font-size: 20px; margin-bottom: -5px;">Data Set</p><br>
+            <div class="form-group">
+              <select class="form-control">
+                <option>Age</option>
+                <option>Race</option>
+                <option>Gender</option>
+                <option>Income</option>
+                <option>Expenditures</option>
+              </select>
+            </div>
+          </form>
+        </div><br>
+
+        <!-- <small>Age of Population</small> -->
+        <div id="ageChart" style="margin-bottom: -20px; margin-top: -20px"></div>
+        <hr style="width: 400px; margin-bottom: 10px margin-top: 10px;">
+        <p class="font-white" style="font-size: 15px; text-align: center">Number of People</p>
+        <div id="ageBar" style="margin-top: -30px"></div>
+
+        <!-- <div id="chart" style="margin-top: 75px;"></div> -->
       </div>
-
-      <!-- <small>Age of Population</small> -->
-      <div id="ageChart" style="margin-bottom: -20px; margin-top: -20px"></div>
-      <hr style="width: 300px; margin-bottom: 5px">
-      <p class="font-white" style="font-size: 15px; text-align: center">Number of People</p>
-      <div id="ageBar" style="margin-top: -30px"></div>
-
-      <!-- <div id="chart" style="margin-top: 75px;"></div> -->
 
 
     </div> <!-- end right form -->

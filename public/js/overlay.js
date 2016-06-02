@@ -154,10 +154,11 @@ function selectRegion(name) {
 
 function initMap() {
   var map = new google.maps.Map(d3.select("#map").node(), {
-    zoom: 9,
+    zoom: 10,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    center: new google.maps.LatLng(32.9185, -117.266),
+    center: new google.maps.LatLng(33, -117.000),
     streetViewControl: false,
+    draggable: false,
     styles: [{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]}]
   });
 
