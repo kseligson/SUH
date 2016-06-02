@@ -158,7 +158,6 @@ function initMap() {
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     center: new google.maps.LatLng(33, -117.000),
     streetViewControl: false,
-    draggable: false,
     styles: [{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]}]
   });
 

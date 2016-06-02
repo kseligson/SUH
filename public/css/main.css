@@ -7,7 +7,7 @@ p {
 	position: fixed;
 	width: 450px;
 	left: 0;
-	overflow-y: none;
+	overflow-y: auto;
 	z-index: 1000;
 	padding: 20px;
 	box-shadow: 5px 5px 2px rgba(136,136,136, 0.5);
@@ -38,7 +38,7 @@ label {
 
 .market-form {
 	bottom: 0;
-	padding-top: 50px;
+	padding-top: 10px;
 }
 
 .font-white {
@@ -46,7 +46,7 @@ label {
 }
 
 .bg-dark {
-	background: rgba(65,84,132,0.7);
+	background: rgba(65,84,132,1);
 }
 
 .chart-font {
@@ -57,11 +57,9 @@ label {
 
 #chart-title {
 	margin-top: 0px;
-	width: 450px;
 	left: 0;
 	overflow-y: auto;
 	z-index: 1000;
-	position: fixed;
 	height: 50px;
 }
 

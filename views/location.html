@@ -42,7 +42,7 @@
       <div id="abouthelp">
         <a href="#">About</a> | <a href="#" data-toggle="modal" data-target="#helpModal">Help</a>
       </div>
-      <div style="margin-top: 10px;">
+      <div style="margin-top: 10px; overflow-y: auto;">
         <h1 class="bg-dark chart-font font-white center" id="chart-title">Coastal</h1>
 
         <!-- <br><br><br><br> -->
@@ -63,17 +63,14 @@
 
         <div>
           <form class="market-form">
-            <br>
             <p class="font-white" style="font-size: 20px; margin-bottom: -5px;">Data Set</p><br>
-            <div class="form-group">
-              <select class="form-control">
-                <option>Age</option>
-                <option>Race</option>
-                <option>Gender</option>
-                <option>Income</option>
-                <option>Expenditures</option>
-              </select>
-            </div>
+            <ul class="nav nav-pills">
+              <li role="presentation" class="active"><a href="#">Age</a></li>
+              <li role="presentation"><a href="#">Race</a></li>
+              <li role="presentation"><a href="#">Gender</a></li>
+              <li role="presentation"><a href="#">Income</a></li>
+              <li role="presentation"><a href="#">Expenditures</a></li>
+            </ul>
           </form>
         </div><br>
 
@@ -114,7 +111,6 @@
 
   <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Async -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/async/1.2.1/async.min.js"></script>
   <!-- Underscore -->
@@ -122,7 +118,6 @@
   <script src="./js/bootstrap.min.js"></script>
   <script src="./js/d3.min.js"></script>
   <!-- Load d3.js and c3.js -->
-  <script src="./c3/d3.v3.min.js" charset="utf-8"></script>
   <script src="./c3/c3.min.js"></script>
   <script src="./js/c3-donut.js"></script>
   <script src="./js/overlay.js"></script>
