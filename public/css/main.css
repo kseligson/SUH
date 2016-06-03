@@ -189,11 +189,14 @@ hr {
 	font-size: 25px;
 }
 
-.hoverinfo {
-  border: none !important;
-  border-radius: 2px !important;
-  box-shadow: 0 0 9px #666 !important;
-  background-color: #f8f8f8 !important;
-  font-family: Roboto, sans-serif;
-  text-align: center;
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
 }

@@ -157,14 +157,6 @@ function selectRegion(name) {
 function initMap() {
   $.get('./json/demographics.json', function(items) {
 
-    var popData = {};
-    var popColor = {};
-
-    for(var i = 0; i < items.length; i++) {
-      //console.log('TOTAL', items[i].total);
-      popData[i] = items[i].total;
-      //console.log('pop', popData[i]);
-    }
       function getColor(totalPop) {
         //console.log(totalPop);
         return totalPop > 150000 ? '#800026' :
@@ -213,6 +205,22 @@ function initMap() {
         //console.log('event', event.feature.getProperty('NAME'));
         //console.log('event-lowercase', event.feature.getProperty('NAME').toLowerCase().capitalize());
         selectRegion(event.feature.getProperty('NAME').toLowerCase().capitalize());
+      });
+
+      var infoWindow = new google.maps.InfoWindow({
+        content: ""
+      });
+
+      map.data.addListener('mouseover', function(e) {
+        console.log(e);
+        infoWindow.setContent('<div style="line-height:1.00;overflow:hidden;white-space:nowrap;">' +
+          e.feature.getProperty('NAME').toLowerCase().capitalize() + '</div>');
+
+        var anchor = new google.maps.MVCObject();
+        var position;
+        console.log('latlng', e.latLng);
+        anchor.set("position", e.latLng);
+        infoWindow.open(map, anchor);
       });
 
   });
