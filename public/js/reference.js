@@ -5,7 +5,7 @@
 
 
   var data =[];
-  $.each ( data2, function ( index, value ) { 
+  $.each ( data2, function ( index, value ) {
     var obj = { area: data2[index].Area, percent: data2[index].percent};
     console.log(obj);
     data.push(obj);

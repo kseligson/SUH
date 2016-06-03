@@ -134,6 +134,7 @@ function updateAgeData(name, callback) {
 /**
  * Function to select region data
  */
+
 function selectRegion(name) {
   // Display region name
   $('#chart-title').html(name);
@@ -152,34 +153,68 @@ function selectRegion(name) {
     });
 }
 
+
 function initMap() {
-  var map = new google.maps.Map(d3.select("#map").node(), {
-    zoom: 10,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    center: new google.maps.LatLng(33, -117.000),
-    streetViewControl: false,
-    styles: [{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]}]
+  $.get('./json/demographics.json', function(items) {
+
+    var popData = {};
+    var popColor = {};
+
+    for(var i = 0; i < items.length; i++) {
+      //console.log('TOTAL', items[i].total);
+      popData[i] = items[i].total;
+      //console.log('pop', popData[i]);
+    }
+      function getColor(totalPop) {
+        //console.log(totalPop);
+        return totalPop > 150000 ? '#800026' :
+               totalPop > 130000  ? '#BD0026' :
+               totalPop > 110000  ? '#E31A1C' :
+               totalPop > 90000  ? '#FC4E2A' :
+               totalPop > 70000   ? '#FD8D3C' :
+               totalPop > 50000   ? '#FEB24C' :
+               totalPop > 10000   ? '#FED976' :
+                          '#FFEDA0';
+      }
+
+      var map = new google.maps.Map(d3.select("#map").node(), {
+        zoom: 10,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        center: new google.maps.LatLng(33, -117.000),
+        streetViewControl: false,
+        styles: [{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]}]
+      });
+
+      map.data.loadGeoJson('./json/county2.json');
+
+      map.data.setStyle(function(feature) {
+      //console.log('asdasd', getColor(popData[1]));
+      //console.log('prop', feature.getProperty('SRA'));
+       return {
+       fillColor: getColor(feature.getProperty('total')), // call function to get color for state based on the COLI (Cost of Living Index)
+       fillOpacity: 0.8,
+       strokeColor: '#b3b3b3',
+       strokeWeight: 1,
+       zIndex: 1
+       };
+      });
+
+      map.data.addListener('mouseover', function(event) {
+        map.data.revertStyle();
+        map.data.overrideStyle(event.feature, {fillColor: '#ffffff'});
+        $("#location-name").text(event.feature.getProperty('NAME').toLowerCase().capitalize());
+      });
+
+      map.data.addListener('mouseout', function(event) {
+        //map.data.revertStyle();
+      });
+
+      map.data.addListener('click', function(event) {
+        //console.log('event', event.feature.getProperty('NAME'));
+        //console.log('event-lowercase', event.feature.getProperty('NAME').toLowerCase().capitalize());
+        selectRegion(event.feature.getProperty('NAME').toLowerCase().capitalize());
+      });
+
   });
 
-  map.data.loadGeoJson('./json/county2.json');
-  map.data.setStyle({
-    fillColor: 'gray',
-    strokeWeight: 1
-  });
-
-  map.data.addListener('mouseover', function(event) {
-    map.data.revertStyle();
-    map.data.overrideStyle(event.feature, {fillColor: 'black'});
-    $("#location-name").text(event.feature.getProperty('NAME').toLowerCase().capitalize());
-  });
-
-  map.data.addListener('mouseout', function(event) {
-    //map.data.revertStyle();
-  });
-
-  map.data.addListener('click', function(event) {
-    console.log('event', event.feature.getProperty('NAME'));
-    console.log('event-lowercase', event.feature.getProperty('NAME').toLowerCase().capitalize());
-    selectRegion(event.feature.getProperty('NAME').toLowerCase().capitalize());
-  });
 }

@@ -188,3 +188,12 @@ hr {
 	padding-top: 10px;
 	font-size: 25px;
 }
+
+.hoverinfo {
+  border: none !important;
+  border-radius: 2px !important;
+  box-shadow: 0 0 9px #666 !important;
+  background-color: #f8f8f8 !important;
+  font-family: Roboto, sans-serif;
+  text-align: center;
+}
