@@ -5,6 +5,7 @@ var demographicsData = {};
 var incomeData = {};
 var dataChart, dataBar;
 var regionName = "";
+var lastClicked = "";
 var dataFlag = 0; /* 0 --> Age
                    * 1 --> Race
                    * 2 --> Gender
@@ -51,6 +52,7 @@ function initAgeData(callback) {
     demographicsData = items;
   });
 
+  lastClicked = "Coastal";
   // Initialize age chart
   dataChart = c3.generate({
     bindto: '#dataChart',
@@ -262,7 +264,7 @@ function setAgeFlag() {
   dataFlag = 0;
   async.applyEach(
     [updateAgeData],
-    // name,
+    lastClicked,
     function(err, result) {
       if (err)
         alert(err);
@@ -273,7 +275,7 @@ function setRaceFlag() {
   dataFlag = 1;
   async.applyEach(
     [updateRaceData],
-    // name,
+    lastClicked,
     function(err, result) {
       if (err)
         alert(err);
@@ -284,7 +286,7 @@ function setGenderFlag() {
   dataFlag = 2;
   async.applyEach(
     [updateGenderData],
-    // name,
+    lastClicked,
     function(err, result) {
       if (err)
         alert(err);
@@ -295,7 +297,7 @@ function setIncomeFlag() {
   dataFlag = 3;
   async.applyEach(
     [updateIncomeData],
-    // name,
+    lastClicked,
     function(err, result) {
       if (err)
         alert(err);
@@ -678,7 +680,7 @@ function initMap() {
        return {
        fillColor: getColor(feature.getProperty('total')), // call function to get color for state based on the COLI (Cost of Living Index)
        fillOpacity: 1,
-       strokeColor: '#ffffff',
+       strokeColor: '#000',
        strokeWeight: 1,
        zIndex: 1
        };
@@ -700,6 +702,7 @@ function initMap() {
       map.data.addListener('click', function(event) {
         //console.log('event', event.feature.getProperty('NAME'));
         //console.log('event-lowercase', event.feature.getProperty('NAME').toLowerCase().capitalize());
+        lastClicked = event.feature.getProperty('NAME').toLowerCase().capitalize();
         selectRegion(event.feature.getProperty('NAME').toLowerCase().capitalize());
       });
       var infoWindow = new google.maps.InfoWindow({
