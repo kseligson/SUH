@@ -64,12 +64,12 @@
         <div>
           <form class="market-form">
             <p class="font-white" style="font-size: 20px; margin-bottom: -5px;">Data Set</p><br>
-            <ul class="nav nav-pills">
-              <li role="presentation" class="active"><a href="#" onclick="setAgeFlag();">Age</a></li>
-              <li role="presentation"><a href="#" onclick="setRaceFlag();">Race</a></li>
-              <li role="presentation"><a href="#" onclick="setGenderFlag()">Gender</a></li>
-              <li role="presentation"><a href="#" onclick="setIncomeFlag()">Income</a></li>
-              <li role="presentation"><a href="#">Expenditures</a></li>
+            <ul class="nav nav-pills" id="datapills">
+              <li class="active"><a href="#" data-toggle="tab" onclick="setAgeFlag();">Age</a></li>
+              <li><a href="#" data-toggle="tab" onclick="setRaceFlag();">Race</a></li>
+              <li><a href="#" data-toggle="tab" onclick="setGenderFlag()">Gender</a></li>
+              <li><a href="#" data-toggle="tab" onclick="setIncomeFlag()">Income</a></li>
+              <li><a href="#" data-toggle="tab">Expenditures</a></li>
             </ul>
           </form>
         </div><br>
@@ -115,6 +115,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/async/1.2.1/async.min.js"></script>
   <!-- Underscore -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <script src="./js/jquery.min.js"></script>
   <script src="./js/bootstrap.min.js"></script>
   <script src="./js/d3.min.js"></script>
   <!-- Load d3.js and c3.js -->
