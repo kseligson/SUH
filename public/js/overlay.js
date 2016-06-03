@@ -356,10 +356,10 @@ function initMap() {
 
       function getColor(totalPop) {
         //console.log(totalPop);
-        return totalPop > 150000 ? '#800026' :
+        return totalPop > 150000  ? '#800026' :
                totalPop > 130000  ? '#BD0026' :
                totalPop > 110000  ? '#E31A1C' :
-               totalPop > 90000  ? '#FC4E2A' :
+               totalPop > 90000   ? '#FC4E2A' :
                totalPop > 70000   ? '#FD8D3C' :
                totalPop > 50000   ? '#FEB24C' :
                totalPop > 10000   ? '#FED976' :
@@ -408,17 +408,17 @@ function initMap() {
         content: ""
       });
 
-      map.data.addListener('mouseover', function(e) {
-        console.log(e);
-        infoWindow.setContent('<div style="line-height:1.00;overflow:hidden;white-space:nowrap;">' +
-          e.feature.getProperty('NAME').toLowerCase().capitalize() + '</div>');
-
-        var anchor = new google.maps.MVCObject();
-        var position;
-        console.log('latlng', e.latLng);
-        anchor.set("position", e.latLng);
-        infoWindow.open(map, anchor);
-      });
+      // map.data.addListener('mouseover', function(e) {
+      //   console.log(e);
+      //   infoWindow.setContent('<div style="line-height:1.00;overflow:hidden;white-space:nowrap;">' +
+      //     e.feature.getProperty('NAME').toLowerCase().capitalize() + '</div>');
+      //
+      //   var anchor = new google.maps.MVCObject();
+      //   var position;
+      //   console.log('latlng', e.latLng);
+      //   anchor.set("position", e.latLng);
+      //   infoWindow.open(map, anchor);
+      // });
 
   });
 
