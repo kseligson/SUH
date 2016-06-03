@@ -130,6 +130,7 @@ function updateAgeData(name, callback) {
     ],
     unload: dataChart.columns,
   });
+  $('text.c3-chart-arcs-title').text("Ratio for Age");
 
   dataBar.load({
     columns: [
@@ -142,6 +143,7 @@ function updateAgeData(name, callback) {
     ],
     unload: dataChart.columns,
   });
+  $('p#bar-title').text("Number of People");
 }
 
 function updateRaceData(name, callback) {
@@ -165,6 +167,7 @@ function updateRaceData(name, callback) {
     ],
     unload: dataChart.columns,
   });
+  $('text.c3-chart-arcs-title').text("Ratio for Race");
 
   dataBar.load({
     columns: [
@@ -176,6 +179,7 @@ function updateRaceData(name, callback) {
     ],
     unload: dataChart.columns,
   });
+  $('p#bar-title').text("Number of People");
 }
 
 function updateGenderData(name, callback) {
@@ -197,6 +201,7 @@ function updateGenderData(name, callback) {
     unload: dataChart.columns,
   });
 
+  $('text.c3-chart-arcs-title').text("Ratio for Gender");
   dataBar.load({
     columns: [
       ["Male", region.number_of_males],
@@ -204,6 +209,7 @@ function updateGenderData(name, callback) {
     ],
     unload: dataChart.columns,
   });
+  $('p#bar-title').text("Number of People");
 }
 
 function updateIncomeData(name, callback) {
@@ -230,20 +236,7 @@ function updateIncomeData(name, callback) {
     ],
     unload: dataChart.columns,
   });
-
-  console.log('dataChart', dataChart);
-
-  // d3.select("svg").append("text")
-  //   .attr("x", 100 )
-  //   .attr("y", 50)
-  //   .style("text-anchor", "middle")
-  //   .text("Your chart title goes here");
-
-  // console.log('text', d3.select("svg").attr("innerText"));
-
-  // d3.select("svg").attr("innerText").text("Test");
-
-  // dataChart.donut.title("Test");
+  $('text.c3-chart-arcs-title').text("Ratio for Income");
 
   dataBar.load({
     columns: [
@@ -258,6 +251,7 @@ function updateIncomeData(name, callback) {
     ],
     unload: dataChart.columns,
   });
+  $('p#bar-title').text("Number of Households");
 }
 
 function setAgeFlag() {
