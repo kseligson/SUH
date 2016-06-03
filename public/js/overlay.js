@@ -174,7 +174,304 @@ function initMap() {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         center: new google.maps.LatLng(33, -117.000),
         streetViewControl: false,
-        styles: [{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]}]
+        styles: [
+          {
+              "elementType": "labels.text",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "landscape.natural",
+              "elementType": "geometry.fill",
+              "stylers": [
+                  {
+                      "color": "#f5f5f2"
+                  },
+                  {
+                      "visibility": "on"
+                  }
+              ]
+          },
+          {
+              "featureType": "administrative",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "transit",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi.attraction",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "landscape.man_made",
+              "elementType": "geometry.fill",
+              "stylers": [
+                  {
+                      "color": "#ffffff"
+                  },
+                  {
+                      "visibility": "on"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi.business",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi.medical",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi.place_of_worship",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi.school",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi.sports_complex",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "road.highway",
+              "elementType": "geometry",
+              "stylers": [
+                  {
+                      "color": "#ffffff"
+                  },
+                  {
+                      "visibility": "simplified"
+                  }
+              ]
+          },
+          {
+              "featureType": "road.arterial",
+              "stylers": [
+                  {
+                      "visibility": "simplified"
+                  },
+                  {
+                      "color": "#ffffff"
+                  }
+              ]
+          },
+          {
+              "featureType": "road.highway",
+              "elementType": "labels.icon",
+              "stylers": [
+                  {
+                      "color": "#ffffff"
+                  },
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "road.highway",
+              "elementType": "labels.icon",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "road.arterial",
+              "stylers": [
+                  {
+                      "color": "#ffffff"
+                  }
+              ]
+          },
+          {
+              "featureType": "road.local",
+              "stylers": [
+                  {
+                      "color": "#ffffff"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi.park",
+              "elementType": "labels.icon",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi",
+              "elementType": "labels.icon",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "landscape",
+              "stylers": [
+                  {
+                      "color": "#e5e8e7"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi.park",
+              "stylers": [
+                  {
+                      "color": "#8ba129"
+                  }
+              ]
+          },
+          {
+              "featureType": "road",
+              "stylers": [
+                  {
+                      "color": "#ffffff"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi.sports_complex",
+              "elementType": "geometry",
+              "stylers": [
+                  {
+                      "color": "#c7c7c7"
+                  },
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi.park",
+              "stylers": [
+                  {
+                      "color": "#91b65d"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi.park",
+              "stylers": [
+                  {
+                      "gamma": 1.51
+                  }
+              ]
+          },
+          {
+              "featureType": "road.local",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "road.local",
+              "elementType": "geometry",
+              "stylers": [
+                  {
+                      "visibility": "on"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi.government",
+              "elementType": "geometry",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "landscape",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "road",
+              "elementType": "labels",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "road.arterial",
+              "elementType": "geometry",
+              "stylers": [
+                  {
+                      "visibility": "simplified"
+                  }
+              ]
+          },
+          {
+              "featureType": "road.local",
+              "stylers": [
+                  {
+                      "visibility": "simplified"
+                  }
+              ]
+          },
+          {
+              "featureType": "road"
+          },
+          {
+              "featureType": "road"
+          },
+          {},
+          {
+              "featureType": "road.highway"
+          }
+      ]
       });
 
       map.data.loadGeoJson('./json/county2.json');
@@ -184,8 +481,8 @@ function initMap() {
       //console.log('prop', feature.getProperty('SRA'));
        return {
        fillColor: getColor(feature.getProperty('total')), // call function to get color for state based on the COLI (Cost of Living Index)
-       fillOpacity: 0.8,
-       strokeColor: '#b3b3b3',
+       fillOpacity: 1,
+       strokeColor: '#ffffff',
        strokeWeight: 1,
        zIndex: 1
        };
@@ -193,7 +490,10 @@ function initMap() {
 
       map.data.addListener('mouseover', function(event) {
         map.data.revertStyle();
-        map.data.overrideStyle(event.feature, {fillColor: '#ffffff'});
+        map.data.overrideStyle(event.feature, {
+        strokeWeight: 3,
+        zIndex: 2,
+        });
         $("#location-name").text(event.feature.getProperty('NAME').toLowerCase().capitalize());
       });
 
@@ -206,23 +506,6 @@ function initMap() {
         //console.log('event-lowercase', event.feature.getProperty('NAME').toLowerCase().capitalize());
         selectRegion(event.feature.getProperty('NAME').toLowerCase().capitalize());
       });
-
-      var infoWindow = new google.maps.InfoWindow({
-        content: ""
-      });
-
-      map.data.addListener('mouseover', function(e) {
-        console.log(e);
-        infoWindow.setContent('<div style="line-height:1.00;overflow:hidden;white-space:nowrap;">' +
-          e.feature.getProperty('NAME').toLowerCase().capitalize() + '</div>');
-
-        var anchor = new google.maps.MVCObject();
-        var position;
-        console.log('latlng', e.latLng);
-        anchor.set("position", e.latLng);
-        infoWindow.open(map, anchor);
-      });
-
   });
 
 }
