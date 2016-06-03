@@ -687,7 +687,7 @@ function initMap() {
       map.data.addListener('mouseover', function(event) {
         map.data.revertStyle();
         map.data.overrideStyle(event.feature, {
-        strokeWeight: 3,
+        strokeWeight: 4,
         zIndex: 2,
         });
         $("#location-name").text(event.feature.getProperty('NAME').toLowerCase().capitalize());
@@ -706,17 +706,17 @@ function initMap() {
         content: ""
       });
 
-      map.data.addListener('mouseover', function(e) {
-        console.log(e);
-        infoWindow.setContent('<div style="line-height:1.00;overflow:hidden;white-space:nowrap;">' +
-          e.feature.getProperty('NAME').toLowerCase().capitalize() + '</div>');
-
-        var anchor = new google.maps.MVCObject();
-        var position;
-        console.log('latlng', e.latLng);
-        anchor.set("position", e.latLng);
-        infoWindow.open(map, anchor);
-      });
+      // map.data.addListener('mouseover', function(e) {
+      //   console.log(e);
+      //   infoWindow.setContent('<div style="line-height:1.00;overflow:hidden;white-space:nowrap;">' +
+      //     e.feature.getProperty('NAME').toLowerCase().capitalize() + '</div>');
+      //
+      //   var anchor = new google.maps.MVCObject();
+      //   var position;
+      //   console.log('latlng', e.latLng);
+      //   anchor.set("position", e.latLng);
+      //   infoWindow.open(map, anchor);
+      // });
 
   });
 
