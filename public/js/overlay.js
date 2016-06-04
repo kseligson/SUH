@@ -681,11 +681,12 @@ function initMap() {
       });
 
       map.data.addListener('mouseover', function(event) {
-        map.data.revertStyle();
-        map.data.overrideStyle(event.feature, {
-        strokeWeight: 4,
-        zIndex: 2,
-        });
+         map.data.revertStyle();
+         map.data.overrideStyle(event.feature, {
+         strokeColor: 'white',
+         strokeWeight: 4,
+         zIndex: 2,
+         });
         $("#location-name").text(event.feature.getProperty('NAME').toLowerCase().capitalize());
       });
 
@@ -698,6 +699,11 @@ function initMap() {
         //console.log('event-lowercase', event.feature.getProperty('NAME').toLowerCase().capitalize());
         lastClicked = event.feature.getProperty('NAME').toLowerCase().capitalize();
         selectRegion(event.feature.getProperty('NAME').toLowerCase().capitalize());
+        map.data.overrideStyle(event.feature, {
+        strokeColor: 'white',
+        strokeWeight: 4,
+        zIndex: 2,
+        });
       });
       var infoWindow = new google.maps.InfoWindow({
         content: ""
