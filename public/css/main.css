@@ -56,11 +56,12 @@ label {
 }
 
 #chart-title {
-	margin-top: 0px;
+	padding-top: 0px;
 	left: 0;
 	overflow-y: auto;
 	z-index: 1000;
 	height: 50px;
+	font-weight: 100;
 }
 
 #logo {
@@ -71,6 +72,8 @@ label {
 	z-index: 1000;
 	position: fixed;
 	height: 50px;
+	font-family: 'Dosis', sans-serif;
+	font-weight: 500;
 }
 
 #description {
