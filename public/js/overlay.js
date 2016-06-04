@@ -703,6 +703,23 @@ function initMap() {
         content: ""
       });
 
+      var legend = document.getElementById('legend');
+        var div = document.createElement('div', 'info legend'),
+            grades = [0, 10000, 50000, 70000, 90000, 110000, 130000, 150000],
+            labels = [];
+
+        // loop through our density intervals and generate a label with a colored square for each interval
+        for (var i = 0; i < grades.length; i++) {
+          console.log('grades', getColor(grades[i]));
+            div.innerHTML +=
+                '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+                grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+        }
+        legend.appendChild(div);
+
+      map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(
+        document.getElementById('legend'));
+
       // map.data.addListener('mouseover', function(e) {
       //   console.log(e);
       //   infoWindow.setContent('<div style="line-height:1.00;overflow:hidden;white-space:nowrap;">' +
