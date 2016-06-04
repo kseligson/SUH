@@ -179,7 +179,7 @@ hr {
 .over-map {
 	position: absolute;
 	left: 600px;
-	top: 89%;
+	bottom: 25px;
 	border-radius: 25px;
 	height: 75px;
 	width: 200px;

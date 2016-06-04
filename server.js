@@ -43,14 +43,11 @@ app.set('port', process.env.PORT || 3000);
 app.get('/', function(req, res) {
   res.render('index');
 });
-app.get('/findout', function(req, res) {
-  res.render('idea');
-});
-app.get('/getaclue', function(req, res) {
+app.get('/map', function(req, res) {
   res.render('location');
 });
-app.get('/map', function(req, res) {
-  res.render('map');
+app.get('/about', function(req, res) {
+  res.render('about');
 });
 
 app.get('/delphidata', function (req, res) {
