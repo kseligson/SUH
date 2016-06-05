@@ -3,6 +3,7 @@
  */
 var demographicsData = {};
 var incomeData = {};
+var expenditureData = {};
 var dataChart, dataBar;
 var regionName = "";
 var lastClicked = "";
@@ -10,22 +11,28 @@ var dataFlag = 0; /* 0 --> Age
                    * 1 --> Race
                    * 2 --> Gender
                    * 3 --> Income
+                   * 4 --> Expenditures
                    */
+var reload = 0;
 
 $(document).ready(function() {
+
+  // initMap();
 
   async.parallel(
     [
       initAgeData,
-      initIncomeData
-    ],
-  function(err, results) {
-    if (err)
-      alert(err);
-
-    // Only initialize once everything is loaded.
-    initMap();
-  });
+      initIncomeData,
+      initExpenditureData
+    ]);
+  // function(err, results) {
+  //   if (err)
+  //     alert(err);
+  //
+  //   // Only initialize once everything is loaded.
+  //   initMap();
+  //   console.log('ready');
+  // });
 });
 
 // Capitalize the first letter of each word
@@ -42,17 +49,26 @@ function initIncomeData(callback) {
   callback(null, true);
 }
 
+// Load expenditure data
+function initExpenditureData(callback) {
+  $.getJSON('/json/expenditures.json', function(items) {
+    expenditureData = items;
+  });
+  callback(null, true);
+}
+
 /**
  * Load and process age data
  */
 function initAgeData(callback) {
 
   $.getJSON('/json/demographics.json', function(items) {
-    console.log('age', items);
+    console.log('log-age', items);
     demographicsData = items;
   });
 
   lastClicked = "Coastal";
+
   // Initialize age chart
   dataChart = c3.generate({
     bindto: '#dataChart',
@@ -100,11 +116,15 @@ function initAgeData(callback) {
             categories: ['']
         },
         y: {
-            label: 'Number of People'
+          label: {
+              text: '',
+              // position: 'outer-middle',
+          }
         }
     }
   });
 
+  // $('text.c3-axis-y-label').text("Number of People");
   callback(null, true);
 }
 
@@ -225,14 +245,14 @@ function updateIncomeData(name, callback) {
   console.log('region', region);
   dataChart.load({
     columns: [
-      ["<15K", region.less_than_15k],
-      ["15K-35K", region.fifteen_to_35k],
-      ["35K-50K", region.thirtyfive_to_50k],
-      ["50K-75K", region.fifty_to_75k],
-      ["75K-100K", region.seventyfive_to_100k],
-      ["100K-150K", region.onehundred_to_150k],
-      ["150K-200K", region.onefifty_to_200k],
-      [">200K", region.greater_than_200k],
+      ["<$15K", region.less_than_15k],
+      ["$15K-$35K", region.fifteen_to_35k],
+      ["$35K-$50K", region.thirtyfive_to_50k],
+      ["$50K-$75K", region.fifty_to_75k],
+      ["$75K-$100K", region.seventyfive_to_100k],
+      ["$100K-$150K", region.onehundred_to_150k],
+      ["$150K-$200K", region.onefifty_to_200k],
+      [">$200K", region.greater_than_200k],
     ],
     unload: dataChart.columns,
   });
@@ -240,18 +260,63 @@ function updateIncomeData(name, callback) {
 
   dataBar.load({
     columns: [
-      ["<15K", region.less_than_15k],
-      ["15K-35K", region.fifteen_to_35k],
-      ["35K-50K", region.thirtyfive_to_50k],
-      ["50K-75K", region.fifty_to_75k],
-      ["75K-100K", region.seventyfive_to_100k],
-      ["100K-150K", region.onehundred_to_150k],
-      ["150K-200K", region.onefifty_to_200k],
-      [">200K", region.greater_than_200k],
+      ["<$15K", region.less_than_15k],
+      ["$15K-$35K", region.fifteen_to_35k],
+      ["$35K-$50K", region.thirtyfive_to_50k],
+      ["$50K-$75K", region.fifty_to_75k],
+      ["$75K-$100K", region.seventyfive_to_100k],
+      ["$100K-$150K", region.onehundred_to_150k],
+      ["$150K-$200K", region.onefifty_to_200k],
+      [">$200K", region.greater_than_200k],
     ],
     unload: dataChart.columns,
   });
   $('p#bar-title').text("Number of Households");
+  // $('text.c3-axis-y-label').html("Number of Households");
+}
+
+function updateExpenditureData(name, callback) {
+  var expendData = expenditureData;
+  var region;
+
+  expendData.map(function (elem) {
+    if (elem.Area == name) {
+      region = elem;
+    }
+  });
+
+  dataChart.load({
+    columns: [
+      ["Eating Out", region.food_away],
+      ["Alcohol + Smoking", (region.alcohol + region.smoking)],
+      ["Apparel + Services", region.apparel_services],
+      ["Travel", region.travel],
+      ["Household Supplies", region.housekeeping_supplies],
+      ["Household Furnishings", region.household_furnishings],
+      ["Entertainment + Recreation", region.entertainment_recreation],
+      ["Personal Care", region.personal_care],
+      ["Gifts + Support Payments", region.support],
+    ],
+    unload: dataChart.columns,
+  });
+  $('text.c3-chart-arcs-title').text("Ratio for Expenditures");
+
+  dataBar.load({
+    columns: [
+      ["Eating Out", region.food_away],
+      ["Alcohol + Smoking", Math.round((region.alcohol + region.smoking)*100)/100],
+      ["Apparel + Services", region.apparel_services],
+      ["Travel", region.travel],
+      ["Household Supplies", region.housekeeping_supplies],
+      ["Household Furnishings", region.household_furnishings],
+      ["Entertainment + Recreation", region.entertainment_recreation],
+      ["Personal Care", region.personal_care],
+      ["Gifts + Support Payments", region.support],
+    ],
+    unload: dataChart.columns,
+  });
+  $('p#bar-title').text("Amount Spent");
+  // $('text.c3-axis-y-label').text("Amount Spent");
 }
 
 function setAgeFlag() {
@@ -295,20 +360,28 @@ function setIncomeFlag() {
     function(err, result) {
       if (err)
         alert(err);
-    });}
+    });
+}
+
+function setExpenditureFlag() {
+  dataFlag = 4;
+  async.applyEach(
+    [updateExpenditureData],
+    lastClicked,
+    function(err, result) {
+      if (err)
+        alert(err);
+    });
+}
 
 /**
  * Function to select region data
  */
 
 function selectRegion(name) {
+  console.log('select region');
   // Display region name
   $('#chart-title').html(name);
-
-  $.get('/demographics_age', function(items) {
-    demographicsData = items;
-    console.log('inside!');
-  });
 
   if(dataFlag === 0) { // 0 for age
     async.applyEach(
@@ -342,11 +415,20 @@ function selectRegion(name) {
         if (err)
           alert(err);
       });
-    }
+  } else if (dataFlag === 4) { // 4 for expenditures
+    async.applyEach(
+      [updateExpenditureData],
+      name,
+      function(err, result) {
+        if (err)
+          alert(err);
+      });
+  }
 }
 
 
 function initMap() {
+  console.log('init map');
   $.get('./json/demographics.json', function(items) {
 
       function getColor(totalPop) {
@@ -360,7 +442,7 @@ function initMap() {
                totalPop > 10000   ? '#FED976' :
                           '#FFEDA0';
       }
-
+      console.log('after color');
       var map = new google.maps.Map(d3.select("#map").node(), {
         zoom: 10,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -665,6 +747,7 @@ function initMap() {
           }
       ]
       });
+      console.log('after map');
 
       map.data.loadGeoJson('./json/county2.json');
 
@@ -705,27 +788,29 @@ function initMap() {
         zIndex: 2,
         });
       });
+
       var infoWindow = new google.maps.InfoWindow({
         content: ""
       });
 
+      console.log('before legend');
       var legend = document.getElementById('legend');
-        var div = document.createElement('div', 'info legend'),
-            grades = [0, 10000, 50000, 70000, 90000, 110000, 130000, 150000],
-            labels = [];
+      var div = document.createElement('div', 'info legend'),
+          grades = [0, 10000, 50000, 70000, 90000, 110000, 130000, 150000],
+          labels = [];
 
-        // loop through our density intervals and generate a label with a colored square for each interval
-        for (var i = 0; i < grades.length; i++) {
-          console.log('grades', getColor(grades[i]));
-            div.innerHTML +=
-                '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-                grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-        }
-        legend.appendChild(div);
+      // loop through our density intervals and generate a label with a colored square for each interval
+      for (var i = 0; i < grades.length; i++) {
+        console.log('grades', getColor(grades[i]));
+          div.innerHTML +=
+              '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+              grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+      }
+      legend.appendChild(div);
 
       map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(
         document.getElementById('legend'));
-
+      console.log('after legend');
       // map.data.addListener('mouseover', function(e) {
       //   console.log(e);
       //   infoWindow.setContent('<div style="line-height:1.00;overflow:hidden;white-space:nowrap;">' +
@@ -737,7 +822,6 @@ function initMap() {
       //   anchor.set("position", e.latLng);
       //   infoWindow.open(map, anchor);
       // });
-
   });
 
 }

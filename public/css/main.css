@@ -5,7 +5,7 @@ p {
 	height: 100%;
 	background: rgba(77,98,167, 1);
 	position: fixed;
-	width: 450px;
+	width: 460px;
 	left: 0;
 	overflow-y: auto;
 	z-index: 1000;
@@ -166,8 +166,8 @@ hr {
 
 #map {
 	height: calc(100vh);
-	width: calc(100vw - 450px);
-	margin-left: 450px;
+	width: calc(100vw - 460px);
+	margin-left: 460px;
 }
 
 #location-name {
@@ -178,7 +178,7 @@ hr {
 
 .over-map {
 	position: absolute;
-	left: 600px;
+	left: 610px;
 	bottom: 25px;
 	border-radius: 25px;
 	height: 75px;
@@ -216,4 +216,10 @@ hr {
 .nav > li > a {
 	color: #fff !important;
 	font-weight: 100;
+}
+
+#y-axis-title {
+	transform: rotate(-90deg);
+	position: absolute;;
+	margin-left: -5px;
 }
