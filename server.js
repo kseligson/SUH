@@ -49,6 +49,9 @@ app.get('/map', function(req, res) {
 app.get('/about', function(req, res) {
   res.render('about');
 });
+app.get('/help', function(req, res) {
+  res.render('help');
+});
 
 app.get('/delphidata', function (req, res) {
   // TODO
