@@ -1,6 +1,105 @@
+/* General classes */
+body {
+	background: rgba(77,98,167, 1);
+}
+
 p {
 	font-weight: 100;
 }
+
+a {
+	color: #fff !important;
+}
+
+.page-title {
+	font-family: 'Dosis', sans-serif;
+	font-weight: 500;
+}
+
+.page-subtitle {
+  font-size: 25px;
+  font-weight: 300;
+  font-family: 'Dosis', sans-serif;
+}
+
+.rect {
+	background-color: rgba(65,84,132,1);
+	box-shadow: 0px 5px 2px rgba(0,0,0, 0.5);
+}
+
+.font-white {
+	color: #fff;
+}
+
+.bg-dark {
+	background: rgba(65,84,132,1);
+}
+
+.underline:hover {
+	text-decoration: underline !important;
+}
+
+.center {
+	text-align: center;
+}
+
+.no-deco:hover {
+	text-decoration: none;
+	color: #fff;
+}
+
+.no-deco:visited {
+	text-decoration: none;
+	color: #fff;
+}
+
+.over-map {
+	position: absolute;
+	left: 610px;
+	bottom: 25px;
+	border-radius: 25px;
+	height: 75px;
+	width: 200px;
+	background-color: rgb(77,98,167);
+}
+
+/* Landing page */
+#index .page-title {
+  font-size: 200px;
+}
+
+#index .btn{
+  margin-top: 20px;
+  width: 70px;
+  height: 70px;
+  font-size: 30px;
+  font-weight: 300;
+  vertical-align: middle;
+  border: solid 3px white;
+  border-radius: 50%;
+  background-color: rgba(65,84,132,1);
+  box-shadow: 2px 2px 1px rgba(0,0,0, 0.5);
+}
+
+#centered {
+  margin: 0;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#index .rect {
+  height: 50vh;
+}
+
+#index .glyphicon {
+	padding-top: 1px;
+}
+
+/* Main page */
 .left-form {
 	height: 100%;
 	background: rgba(77,98,167, 1);
@@ -13,40 +112,9 @@ p {
 	box-shadow: 5px 5px 2px rgba(136,136,136, 0.5);
 }
 
-.right-form {
-	height: 100%;
-	background: rgba(77,98,167, 1);
-	width: 450px;
-	position: absolute;
-	right: 0px;
-	overflow-y: auto;
-	z-index: 1000;
-	padding: 20px;
-	box-shadow: -5px 5px 2px rgba(136,136,136, 0.5);
-}
-
-label {
-	color: white;
-}
-
-#submitBtn {
-}
-
-#btnArea {
-	padding-top: 10px;
-}
-
 .market-form {
 	bottom: 0;
 	padding-top: 10px;
-}
-
-.font-white {
-	color: white;
-}
-
-.bg-dark {
-	background: rgba(65,84,132,1);
 }
 
 .chart-font {
@@ -74,94 +142,19 @@ label {
 	height: 50px;
 	font-family: 'Dosis', sans-serif;
 	font-weight: 500;
-}
-
-#description {
-	padding-top: 100px;
-	font-size: 25px;
+	font-size: 35px;
 }
 
 #abouthelp {
 	margin-top:40px;
-	color: #ffffff;
-	text-align: center;
 	font-size: 18pt;
 	font-weight: 100;
 }
-#abouthelp a {
-	color: #ffffff;
-}
-
-.center {
-	text-align: center;
-}
-
-.title {
-	font-size: 35px;
-}
-
-#about {
-	position: absolute;
-	bottom: 5px;
-	left: 85px;
-}
-
-.button{
-  margin-top: 65px;
-  display: block;
-  width: 100px;
-  height: 50px;
-  font-size: 20px;
-  line-height: 45px;
-  border-style: solid;
-  border-width: 2px;
-}
-
-#page-title {
-	color: white;
-	text-align: center;
-	padding-top: 140px;
-	font-size: 100px;
-	font-weight: 200;
-}
-
-#page-subtitle {
-	color: white;
-	font-size: 25px;
-	font-weight: 100;
-	text-align: center;
-}
 
 hr {
-	width: 700px;
-}
-
-
-.buttonTitle {
-	padding-top: 50px;
-	font-size: 20px;
-}
-
-#landingBtn {
-	margin-top: 20px;
-	width: 180px;
-	height: 70px;
-	line-height: 60px;
-	font-size: 20px;
-	font-weight: 100;
-	padding: 15px;
-	border-style: solid;
-	border-width: 1px;
-}
-
-.no-deco:hover {
-	text-decoration: none;
-	color: #fff;
-}
-
-.no-deco:visited {
-	text-decoration: none;
-	color: #fff;
+	width: 400px;
+	margin-bottom: 10px;
+	margin-top: 10px;
 }
 
 #map {
@@ -176,28 +169,12 @@ hr {
 	padding-right: 5px;
 }
 
-.over-map {
-	position: absolute;
-	left: 610px;
-	bottom: 25px;
-	border-radius: 25px;
-	height: 75px;
-	width: 200px;
-	background-color: rgb(77,98,167);
-}
-
-.glyphicon {
-	color: white;
-	padding-top: 10px;
-	font-size: 25px;
-}
-
 #legend {
     line-height: 18px;
     color: #555;
-		background: white;
-		padding: 10px;
-		margin-left: 15px;
+	background: white;
+	padding: 10px;
+	margin-left: 15px;
 }
 
 #legend i {
@@ -207,14 +184,13 @@ hr {
     margin-right: 8px;
     opacity: 0.7;
 }
+
 .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
-    color: #fff !important;
     background-color: #E8AE20 !important;
 
 }
 
 .nav > li > a {
-	color: #fff !important;
 	font-weight: 100;
 }
 
@@ -222,4 +198,23 @@ hr {
 	transform: rotate(-90deg);
 	position: absolute;;
 	margin-left: -5px;
+}
+
+/* About/Help page */
+#about .page-title {
+	font-size: 50px;
+}
+
+#about .page-subtitle {
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#about .rect {
+  height: 75px;
+}
+
+#about {
+	background: rgba(77,98,167, 1);	
 }

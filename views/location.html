@@ -13,58 +13,17 @@
 </head>
 
 <body>
-<!--
-    <div class="left-form">
-      <div class="bg-dark title font-white center" id="logo"><a class="font-white no-deco" href="/">SUH DUDE</a></div>
-      <p class="font-white center" id="description">
-        pick a region
-      </p>
-
-      <div id="form-area">
-        <form class="market-form">
-          <div class="form-group">
-            <select class="form-control" id="region-select">
-              <option>Coastal</option>
-              <option>Mira Mesa</option>
-              <option>Coronado</option>
-            </select>
-          </div>
-          <div id="btnArea" align="center">
-            <a href="#" class="button font-white center no-deco" id="submitBtn">go</a>
-          </div>
-        </form>
-      </div>
-
-      <div class="font-white center" id="about">about | <a class="font-white no-deco" data-toggle="modal" data-target="#helpModal" href="#">help</a></div>
-    </div>
--->
-    <div class="left-form">
-      <div class="bg-dark title font-white center" id="logo"><a class="font-white no-deco" href="/">SUH DUDE</a></div>
+    <div class="left-form font-white center">
+      <div class="bg-dark" id="logo"><a class="no-deco" href="/">SUH DUDE</a></div>
       <div id="abouthelp">
-        <a href="/about">About</a> | <a href="#" data-toggle="modal" data-target="#helpModal">Help</a>
+        <a href="#" data-toggle="modal" data-target="#aboutModal" class="underline no-deco">About</a> | <a href="#" data-toggle="modal" data-target="#helpModal" class="underline no-deco">Help</a>
       </div>
       <div style="margin-top: 10px">
-        <p class="bg-dark chart-font font-white center" id="chart-title">Coastal</p>
-
-        <!-- <br><br><br><br> -->
-
-        <!-- <small>Average Median Price / Square Feet</small>
-        <div class="progress">
-            <div id="price-bar" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
-              <span class="sr-only"></span>
-          </div>
-        </div>
-        <small>Population Density</small>
-        <div class="progress">
-          <div id="population-bar" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
-            <span class="sr-only"></span>
-          </div>
-        </div>
-        -->
+        <p class="bg-dark chart-font" id="chart-title">Coastal</p>
 
         <div>
           <form class="market-form">
-            <p class="font-white" style="font-size: 20px; margin-bottom: -5px;">Data Set</p><br>
+            <p style="font-size: 20px; margin-bottom: -5px;">Data Set</p><br>
             <ul class="nav nav-pills" id="datapills">
               <li class="active"><a href="#" data-toggle="tab" onclick="setAgeFlag();">Age</a></li>
               <li><a href="#" data-toggle="tab" onclick="setRaceFlag();">Race</a></li>
@@ -75,14 +34,10 @@
           </form>
         </div><br>
 
-        <!-- <small>Age of Population</small> -->
-        <div id="dataChart" style="margin-bottom: -20px; margin-top: -20px"></div>
-        <hr style="width: 400px; margin-bottom: 10px margin-top: 10px;">
-        <p class="font-white" style="font-size: 15px; text-align: center" id="bar-title">Number of People</p>
-        <!-- <p class="font-white" id="y-axis-title">Number of People</p> -->
-        <div id="dataBar" style="margin-top: -30px"></div>
-
-        <!-- <div id="chart" style="margin-top: 75px;"></div> -->
+        <div id="dataChart" style="margin-bottom: -20px; margin-top: -20px; color:#000; text-align: left"></div>
+        <hr>
+        <p style="font-size: 15px" id="bar-title">Number of People</p>
+        <div id="dataBar" style="margin-top: -30px; color:#000; text-align: left"></div>
       </div>
 
 
@@ -94,17 +49,42 @@
     </div>
     <div class="over-map font-white center"><p id="location-name" style="position: absolute;top: 50%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%)">Coastal</p></div>
 
-
-    <!-- Modal -->
+    <!-- Help Modal -->
     <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel">
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Help</h4>
+        <div class="modal-content font-white center" id="about">
+          <div class="rect">
+            <p class="page-title">HELP</p>
           </div>
-          <div class="modal-body">
-            SUH, Dude!
+          <div align="center">
+            <p class="page-subtitle">
+              SUH DUDE is an easy to use application. Just follow these simple steps:<br>
+              <br>1. Select the region you're interested in<br>2. Check out the charts of the left of the screen
+              <br>3. Look at all the differnt data: age, gender, race, income, and expenditures<br>4. Once you've figured out what place is right for your business...<br>Start Up Here!
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Modal -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content font-white center" id="about">
+          <div class="rect">
+            <p class="page-title">ABOUT</p>
+          </div>
+          <div align="center">
+            <p class="page-subtitle">
+              The name of our application is SUH DUDE which is a parody of a popular meme
+              and essentially stands for Start Up Here. The purpose of this application is to
+              be a data center for eager entrepreneurs who want to utilize the data we provide
+              to come up with the next big thing needed for San Diego. Find all the information
+              you need to start the next business that will change the world.
+            </p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -126,13 +106,6 @@
   <script src="./c3/c3.min.js"></script>
   <script src="./js/c3-donut.js"></script>
   <script src="./js/overlay.js"></script>
-
-  <script>
-    $('#submitBtn').click(function(e) {
-      var region = $('#region-select').val();
-      $('#chart-title').text(region);
-    });
-  </script>
 
 </body>
 </html>
