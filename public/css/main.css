@@ -216,5 +216,10 @@ hr {
 }
 
 #about {
-	background: rgba(77,98,167, 1);	
+	background: rgba(77,98,167, 1);
+}
+
+#datapills > li {
+	border: 1px solid;
+	border-radius: 5px;
 }

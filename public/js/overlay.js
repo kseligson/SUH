@@ -4,14 +4,17 @@
 var demographicsData = {};
 var incomeData = {};
 var expenditureData = {};
+var maritalData = {};
 var dataChart, dataBar;
 var regionName = "";
+var selectedRegion;
 var lastClicked = "";
 var dataFlag = 0; /* 0 --> Age
                    * 1 --> Race
                    * 2 --> Gender
                    * 3 --> Income
                    * 4 --> Expenditures
+                   * 5 --> Marital Status
                    */
 var reload = 0;
 
@@ -23,7 +26,8 @@ $(document).ready(function() {
     [
       initAgeData,
       initIncomeData,
-      initExpenditureData
+      initExpenditureData,
+      initMaritalData
     ]);
   // function(err, results) {
   //   if (err)
@@ -53,6 +57,14 @@ function initIncomeData(callback) {
 function initExpenditureData(callback) {
   $.getJSON('/json/expenditures.json', function(items) {
     expenditureData = items;
+  });
+  callback(null, true);
+}
+
+// Load marital data
+function initMaritalData(callback) {
+  $.getJSON('/json/marital-status.json', function(items) {
+    maritalData = items;
   });
   callback(null, true);
 }
@@ -90,7 +102,7 @@ function initAgeData(callback) {
       transition: null
     },
     donut: {
-      title: "Ratio for Population Age"
+      title: "Population Age"
     }
   });
 
@@ -150,7 +162,7 @@ function updateAgeData(name, callback) {
     ],
     unload: dataChart.columns,
   });
-  $('text.c3-chart-arcs-title').text("Ratio for Age");
+  $('text.c3-chart-arcs-title').text("Population Age");
 
   dataBar.load({
     columns: [
@@ -187,7 +199,7 @@ function updateRaceData(name, callback) {
     ],
     unload: dataChart.columns,
   });
-  $('text.c3-chart-arcs-title').text("Ratio for Race");
+  $('text.c3-chart-arcs-title').text("Race");
 
   dataBar.load({
     columns: [
@@ -218,15 +230,23 @@ function updateGenderData(name, callback) {
       ["Male", region.number_of_males],
       ["Female", region.number_of_females],
     ],
+    colors: {
+      'Male': '#22287F',
+      'Female': '#D62728'
+    },
     unload: dataChart.columns,
   });
 
-  $('text.c3-chart-arcs-title').text("Ratio for Gender");
+  $('text.c3-chart-arcs-title').text("Gender");
   dataBar.load({
     columns: [
       ["Male", region.number_of_males],
       ["Female", region.number_of_females],
     ],
+    colors: {
+      'Male': '#22287F',
+      'Female': '#D62728'
+    },
     unload: dataChart.columns,
   });
   $('p#bar-title').text("Number of People");
@@ -256,7 +276,7 @@ function updateIncomeData(name, callback) {
     ],
     unload: dataChart.columns,
   });
-  $('text.c3-chart-arcs-title').text("Ratio for Income");
+  $('text.c3-chart-arcs-title').text("Income");
 
   dataBar.load({
     columns: [
@@ -299,7 +319,7 @@ function updateExpenditureData(name, callback) {
     ],
     unload: dataChart.columns,
   });
-  $('text.c3-chart-arcs-title').text("Ratio for Expenditures");
+  $('text.c3-chart-arcs-title').text("Expenditures");
 
   dataBar.load({
     columns: [
@@ -316,6 +336,42 @@ function updateExpenditureData(name, callback) {
     unload: dataChart.columns,
   });
   $('p#bar-title').text("Amount Spent");
+  // $('text.c3-axis-y-label').text("Amount Spent");
+}
+
+function updateMaritalData(name, callback) {
+  var marData = maritalData;
+  var region;
+
+  marData.map(function (elem) {
+    if (elem.Area == name) {
+      region = elem;
+    }
+  });
+
+  dataChart.load({
+    columns: [
+      ["Single", region.single],
+      ["Married", region.married],
+      ["Separated", region.separated],
+      ["Widowed", region.widowed],
+      ["Divorced", region.divorced],
+    ],
+    unload: dataChart.columns,
+  });
+  $('text.c3-chart-arcs-title').text("Marital Status");
+
+  dataBar.load({
+    columns: [
+      ["Single", region.single],
+      ["Married", region.married],
+      ["Separated", region.separated],
+      ["Widowed", region.widowed],
+      ["Divorced", region.divorced],
+    ],
+    unload: dataChart.columns,
+  });
+  $('p#bar-title').text("Number of People");
   // $('text.c3-axis-y-label').text("Amount Spent");
 }
 
@@ -374,6 +430,17 @@ function setExpenditureFlag() {
     });
 }
 
+function setMaritalFlag() {
+  dataFlag = 5;
+  async.applyEach(
+    [updateMaritalData],
+    lastClicked,
+    function(err, result) {
+      if (err)
+        alert(err);
+    });
+}
+
 /**
  * Function to select region data
  */
@@ -418,6 +485,14 @@ function selectRegion(name) {
   } else if (dataFlag === 4) { // 4 for expenditures
     async.applyEach(
       [updateExpenditureData],
+      name,
+      function(err, result) {
+        if (err)
+          alert(err);
+      });
+  } else if (dataFlag === 5) { // 5 for marital data
+    async.applyEach(
+      [updateMaritalData],
       name,
       function(err, result) {
         if (err)
@@ -756,21 +831,23 @@ function initMap() {
       //console.log('prop', feature.getProperty('SRA'));
        return {
        fillColor: getColor(feature.getProperty('total')), // call function to get color for state based on the COLI (Cost of Living Index)
-       fillOpacity: 1,
-       strokeColor: '#000',
-       strokeWeight: 1,
-       zIndex: 1
+         fillOpacity: 0.8,
+         strokeColor: '#000',
+         strokeWeight: 1,
+         zIndex: 1
        };
       });
 
-      map.data.addListener('mouseover', function(event) {
+      map.data.addListener('mouseover', function(event) {        
          map.data.revertStyle();
          map.data.overrideStyle(event.feature, {
-         strokeColor: 'white',
-         strokeWeight: 4,
-         zIndex: 2,
+           fillOpacity: 1,
+           strokeColor: 'black',
+           strokeWeight: 6,
+           zIndex: 2,
          });
         $("#location-name").text(event.feature.getProperty('NAME').toLowerCase().capitalize());
+        $("#location-population").text(event.feature.getProperty('total') + " people");
       });
 
       map.data.addListener('mouseout', function(event) {
@@ -783,9 +860,9 @@ function initMap() {
         lastClicked = event.feature.getProperty('NAME').toLowerCase().capitalize();
         selectRegion(event.feature.getProperty('NAME').toLowerCase().capitalize());
         map.data.overrideStyle(event.feature, {
-        strokeColor: 'white',
-        strokeWeight: 4,
-        zIndex: 2,
+          strokeColor: 'white',
+          strokeWeight: 4,
+          zIndex: 2,
         });
       });
 

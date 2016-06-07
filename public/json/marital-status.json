@@ -1,0 +1,386 @@
+[
+  {
+    "Area": "Carlsbad",
+    "single": 24652,
+    "married": 51124,
+    "separated": 1231,
+    "widowed": 5385,
+    "divorced": 11595
+  },
+  {
+    "Area": "Oceanside",
+    "single": 41045,
+    "married": 63902,
+    "separated": 2379,
+    "widowed": 6078,
+    "divorced": 14340
+  },
+  {
+    "Area": "Pendleton",
+    "single": 14088,
+    "married": 13643,
+    "separated": 71,
+    "widowed": 16,
+    "divorced": 390
+  },
+  {
+    "Area": "San Dieguito",
+    "single": 22476,
+    "married": 41237,
+    "separated": 742,
+    "widowed": 3643,
+    "divorced": 7793
+  },
+  {
+    "Area": "Vista",
+    "single": 27520,
+    "married": 37852,
+    "separated": 1374,
+    "widowed": 3592,
+    "divorced": 8633
+  },
+  {
+    "Area": "North Coastal Region",
+    "single": 129781,
+    "married": 207758,
+    "separated": 5797,
+    "widowed": 18714,
+    "divorced": 42751
+  },
+  {
+    "Area": "Coastal",
+    "single": 30403,
+    "married": 25028,
+    "separated": 547,
+    "widowed": 2821,
+    "divorced": 6444
+  },
+  {
+    "Area": "Del Mar-Mira Mesa",
+    "single": 37313,
+    "married": 74668,
+    "separated": 1248,
+    "widowed": 4728,
+    "divorced": 10857
+  },
+  {
+    "Area": "Elliott-Navajo",
+    "single": 22086,
+    "married": 37600,
+    "separated": 925,
+    "widowed": 4204,
+    "divorced": 8025
+  },
+  {
+    "Area": "Kearny Mesa",
+    "single": 52508,
+    "married": 53632,
+    "separated": 2245,
+    "widowed": 7076,
+    "divorced": 15942
+  },
+  {
+    "Area": "Miramar",
+    "single": 3429,
+    "married": 1192,
+    "separated": 48,
+    "widowed": 0,
+    "divorced": 90
+  },
+  {
+    "Area": "Peninsula",
+    "single": 23812,
+    "married": 20905,
+    "separated": 942,
+    "widowed": 2431,
+    "divorced": 6211
+  },
+  {
+    "Area": "University",
+    "single": 30072,
+    "married": 18430,
+    "separated": 634,
+    "widowed": 1899,
+    "divorced": 4115
+  },
+  {
+    "Area": "North Central Region",
+    "single": 199623,
+    "married": 231455,
+    "separated": 6589,
+    "widowed": 23159,
+    "divorced": 51684
+  },
+  {
+    "Area": "Central San Diego",
+    "single": 74317,
+    "married": 43558,
+    "separated": 3579,
+    "widowed": 4886,
+    "divorced": 17879
+  },
+  {
+    "Area": "Mid City",
+    "single": 61866,
+    "married": 44614,
+    "separated": 3951,
+    "widowed": 5838,
+    "divorced": 12739
+  },
+  {
+    "Area": "Southeastern San Diego",
+    "single": 48733,
+    "married": 54058,
+    "separated": 3743,
+    "widowed": 6257,
+    "divorced": 9924
+  },
+  {
+    "Area": "Central Region",
+    "single": 184916,
+    "married": 142230,
+    "separated": 11273,
+    "widowed": 16981,
+    "divorced": 40542
+  },
+  {
+    "Area": "Chula Vista",
+    "single": 30608,
+    "married": 38599,
+    "separated": 3531,
+    "widowed": 6105,
+    "divorced": 9418
+  },
+  {
+    "Area": "Coronado",
+    "single": 4980,
+    "married": 10143,
+    "separated": 355,
+    "widowed": 1193,
+    "divorced": 2094
+  },
+  {
+    "Area": "National City",
+    "single": 17363,
+    "married": 20724,
+    "separated": 1484,
+    "widowed": 2555,
+    "divorced": 3734
+  },
+  {
+    "Area": "South Bay",
+    "single": 39459,
+    "married": 47802,
+    "separated": 3779,
+    "widowed": 5554,
+    "divorced": 9737
+  },
+  {
+    "Area": "Sweetwater",
+    "single": 31325,
+    "married": 60592,
+    "separated": 1573,
+    "widowed": 4277,
+    "divorced": 7482
+  },
+  {
+    "Area": "South Region",
+    "single": 123735,
+    "married": 177860,
+    "separated": 10722,
+    "widowed": 19684,
+    "divorced": 32465
+  },
+  {
+    "Area": "Alpine",
+    "single": 2756,
+    "married": 6814,
+    "separated": 329,
+    "widowed": 851,
+    "divorced": 1183
+  },
+  {
+    "Area": "El Cajon",
+    "single": 34328,
+    "married": 44362,
+    "separated": 2224,
+    "widowed": 6165,
+    "divorced": 11524
+  },
+  {
+    "Area": "Harbison-Crest",
+    "single": 3538,
+    "married": 7040,
+    "separated": 154,
+    "widowed": 756,
+    "divorced": 1668
+  },
+  {
+    "Area": "Jamul",
+    "single": 4752,
+    "married": 7231,
+    "separated": 313,
+    "widowed": 566,
+    "divorced": 1595
+  },
+  {
+    "Area": "La Mesa",
+    "single": 16326,
+    "married": 21959,
+    "separated": 603,
+    "widowed": 3354,
+    "divorced": 7251
+  },
+  {
+    "Area": "Laguna-Pine Valley",
+    "single": 968,
+    "married": 2062,
+    "separated": 18,
+    "widowed": 169,
+    "divorced": 737
+  },
+  {
+    "Area": "Lakeside",
+    "single": 12431,
+    "married": 24027,
+    "separated": 581,
+    "widowed": 2131,
+    "divorced": 5150
+  },
+  {
+    "Area": "Lemon Grove",
+    "single": 9617,
+    "married": 9787,
+    "separated": 610,
+    "widowed": 1184,
+    "divorced": 2787
+  },
+  {
+    "Area": "Mountain Empire",
+    "single": 1798,
+    "married": 2591,
+    "separated": 55,
+    "widowed": 420,
+    "divorced": 496
+  },
+  {
+    "Area": "Santee",
+    "single": 12297,
+    "married": 20301,
+    "separated": 739,
+    "widowed": 2222,
+    "divorced": 5666
+  },
+  {
+    "Area": "Spring Valley",
+    "single": 21739,
+    "married": 31490,
+    "separated": 1863,
+    "widowed": 3589,
+    "divorced": 7472
+  },
+  {
+    "Area": "East Region",
+    "single": 120550,
+    "married": 177664,
+    "separated": 7489,
+    "widowed": 21407,
+    "divorced": 45529
+  },
+  {
+    "Area": "Anza-Borrego",
+    "single": 549,
+    "married": 1558,
+    "separated": 46,
+    "widowed": 203,
+    "divorced": 379
+  },
+  {
+    "Area": "Escondido",
+    "single": 43365,
+    "married": 63374,
+    "separated": 1986,
+    "widowed": 6682,
+    "divorced": 12249
+  },
+  {
+    "Area": "Fallbrook",
+    "single": 10396,
+    "married": 23604,
+    "separated": 634,
+    "widowed": 2369,
+    "divorced": 3519
+  },
+  {
+    "Area": "North San Diego",
+    "single": 20543,
+    "married": 50961,
+    "separated": 974,
+    "widowed": 4698,
+    "divorced": 7399
+  },
+  {
+    "Area": "Palomar-Julian",
+    "single": 973,
+    "married": 2607,
+    "separated": 51,
+    "widowed": 382,
+    "divorced": 637
+  },
+  {
+    "Area": "Pauma",
+    "single": 1737,
+    "married": 3133,
+    "separated": 120,
+    "widowed": 150,
+    "divorced": 471
+  },
+  {
+    "Area": "Poway",
+    "single": 17381,
+    "married": 43167,
+    "separated": 624,
+    "widowed": 3102,
+    "divorced": 6033
+  },
+  {
+    "Area": "Ramona",
+    "single": 7410,
+    "married": 16244,
+    "separated": 332,
+    "widowed": 1330,
+    "divorced": 2741
+  },
+  {
+    "Area": "San Marcos",
+    "single": 19359,
+    "married": 38746,
+    "separated": 737,
+    "widowed": 4842,
+    "divorced": 6873
+  },
+  {
+    "Area": "Valley Center",
+    "single": 4536,
+    "married": 11606,
+    "separated": 366,
+    "widowed": 922,
+    "divorced": 1680
+  },
+  {
+    "Area": "North Inland Region",
+    "single": 126249,
+    "married": 255000,
+    "separated": 5870,
+    "widowed": 24680,
+    "divorced": 41981
+  },
+  {
+    "Area": "San Diego County Total",
+    "single": 0,
+    "married": 0,
+    "separated": 0,
+    "widowed": 0,
+    "divorced": 0
+  }
+]
