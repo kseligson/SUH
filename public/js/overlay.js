@@ -17,7 +17,7 @@ var reload = 0;
 
 $(document).ready(function() {
 
-  // initMap();
+  initMap();
 
   async.parallel(
     [
