@@ -433,14 +433,14 @@ function initMap() {
 
       function getColor(totalPop) {
         //console.log(totalPop);
-        return totalPop > 150000  ? '#800026' :
-               totalPop > 130000  ? '#BD0026' :
-               totalPop > 110000  ? '#E31A1C' :
-               totalPop > 90000   ? '#FC4E2A' :
-               totalPop > 70000   ? '#FD8D3C' :
-               totalPop > 50000   ? '#FEB24C' :
-               totalPop > 10000   ? '#FED976' :
-                          '#FFEDA0';
+        return totalPop > 150000  ? '#0c2c84' :
+               totalPop > 130000  ? '#225ea8' :
+               totalPop > 110000  ? '#1d91c0' :
+               totalPop > 90000   ? '#41b6c4' :
+               totalPop > 70000   ? '#7fcdbb' :
+               totalPop > 50000   ? '#c7e9b4' :
+               totalPop > 10000   ? '#edf8b1' :
+                          '#ffffd9';
       }
       console.log('after color');
       var map = new google.maps.Map(d3.select("#map").node(), {
