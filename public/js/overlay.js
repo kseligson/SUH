@@ -839,34 +839,61 @@ function initMap() {
       });
 
       map.data.addListener('mouseover', function(event) {
-        var curr = event.feature.getProperty('NAME').toLowerCase().capitalize();
-        // if(curr != lastClicked) {
-          map.data.revertStyle();
-          map.data.overrideStyle(event.feature, {
+         var curr = event.feature.getProperty('NAME').toLowerCase().capitalize();
+         if(!selectedRegion) {
+           map.data.revertStyle();
+           map.data.overrideStyle(event.feature, {
              fillOpacity: 1,
-             strokeColor: 'white',
+             strokeColor: '#fff',
              strokeWeight: 6,
              zIndex: 2,
-          });
-        // }
+           });
+         }
         $("#location-name").text(event.feature.getProperty('NAME').toLowerCase().capitalize());
         $("#location-population").text(event.feature.getProperty('total') + " people");
       });
 
       map.data.addListener('mouseout', function(event) {
-        //map.data.revertStyle();
+        // if(selectedRegion == event.feature.getProperty('NAME')) {
+        //   map.data.setStyle(event.feature, {
+        //     fillOpacity: 1,
+        //     strokeColor: "#fff",
+        //     strokeWeight: 6,
+        //     zIndex: 2
+        //   });
+        // }
       });
 
       map.data.addListener('click', function(event) {
         //console.log('event', event.feature.getProperty('NAME'));
         //console.log('event-lowercase', event.feature.getProperty('NAME').toLowerCase().capitalize());
-        lastClicked = event.feature.getProperty('NAME').toLowerCase().capitalize();
-        selectRegion(event.feature.getProperty('NAME').toLowerCase().capitalize());
-        map.data.overrideStyle(event.feature, {
-          strokeColor: 'white',
-          strokeWeight: 4,
-          zIndex: 2,
-        });
+
+        if (selectedRegion != event.feature.getProperty('NAME'))
+        {
+          map.data.revertStyle();
+          // map.data.overrideStyle(event.feature, {strokeWeight: 8});
+          // selectRegion(event.feature.getProperty('NAME'));
+          lastClicked = event.feature.getProperty('NAME').toLowerCase().capitalize();
+          selectedRegion = event.feature.getProperty('NAME').toLowerCase().capitalize();
+          selectRegion(event.feature.getProperty('NAME').toLowerCase().capitalize());
+          map.data.overrideStyle(event.feature, {
+            fillOpacity: 1,
+            strokeColor: 'white',
+            strokeWeight: 4,
+            zIndex: 2,
+          });
+        } else {
+          map.data.revertStyle();
+        }
+
+        // lastClicked = event.feature.getProperty('NAME').toLowerCase().capitalize();
+        // selectedRegion = event.feature.getProperty('NAME').toLowerCase().capitalize();
+        // selectRegion(event.feature.getProperty('NAME').toLowerCase().capitalize());
+        // map.data.overrideStyle(event.feature, {
+        //   strokeColor: 'white',
+        //   strokeWeight: 4,
+        //   zIndex: 2,
+        // });
       });
 
       var infoWindow = new google.maps.InfoWindow({
