@@ -7,6 +7,10 @@ p {
 	font-weight: 100;
 }
 
+a {
+	color: #fff !important;
+}
+
 .page-title {
 	font-family: 'Dosis', sans-serif;
 	font-weight: 500;
@@ -24,7 +28,7 @@ p {
 }
 
 .font-white {
-	color: white;
+	color: #fff;
 }
 
 .bg-dark {
@@ -168,9 +172,9 @@ hr {
 #legend {
     line-height: 18px;
     color: #555;
-		background: white;
-		padding: 10px;
-		margin-left: 15px;
+	background: white;
+	padding: 10px;
+	margin-left: 15px;
 }
 
 #legend i {
@@ -182,13 +186,11 @@ hr {
 }
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
-    color: #fff !important;
     background-color: #E8AE20 !important;
 
 }
 
 .nav > li > a {
-	color: #fff !important;
 	font-weight: 100;
 }
 
@@ -204,17 +206,15 @@ hr {
 }
 
 #about .page-subtitle {
-  margin-top: 10%;
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 #about .rect {
   height: 75px;
 }
 
-#about .glyphicon {
-  float: left;
-  font-size: 25px;
-  color: white;
-  margin-top: 25px;
-  margin-left: 10px;
+#about {
+	background: rgba(77,98,167, 1);	
 }

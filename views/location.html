@@ -16,7 +16,7 @@
     <div class="left-form font-white center">
       <div class="bg-dark" id="logo"><a class="no-deco" href="/">SUH DUDE</a></div>
       <div id="abouthelp">
-        <a href="/about" class="underline no-deco">About</a> | <a href="/help" class="underline no-deco">Help</a>
+        <a href="#" data-toggle="modal" data-target="#aboutModal" class="underline no-deco">About</a> | <a href="#" data-toggle="modal" data-target="#helpModal" class="underline no-deco">Help</a>
       </div>
       <div style="margin-top: 10px">
         <p class="bg-dark chart-font" id="chart-title">Coastal</p>
@@ -48,6 +48,50 @@
       Population
     </div>
     <div class="over-map font-white center"><p id="location-name" style="position: absolute;top: 50%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%)">Coastal</p></div>
+
+    <!-- Help Modal -->
+    <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content font-white center" id="about">
+          <div class="rect">
+            <p class="page-title">HELP</p>
+          </div>
+          <div align="center">
+            <p class="page-subtitle">
+              SUH DUDE is an easy to use application. Just follow these simple steps:<br>
+              <br>1. Select the region you're interested in<br>2. Check out the charts of the left of the screen
+              <br>3. Look at all the differnt data: age, gender, race, income, and expenditures<br>4. Once you've figured out what place is right for your business...<br>Start Up Here!
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Modal -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content font-white center" id="about">
+          <div class="rect">
+            <p class="page-title">ABOUT</p>
+          </div>
+          <div align="center">
+            <p class="page-subtitle">
+              The name of our application is SUH DUDE which is a parody of a popular meme
+              and essentially stands for Start Up Here. The purpose of this application is to
+              be a data center for eager entrepreneurs who want to utilize the data we provide
+              to come up with the next big thing needed for San Diego. Find all the information
+              you need to start the next business that will change the world.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
   <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
