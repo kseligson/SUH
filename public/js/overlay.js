@@ -838,14 +838,17 @@ function initMap() {
        };
       });
 
-      map.data.addListener('mouseover', function(event) {        
-         map.data.revertStyle();
-         map.data.overrideStyle(event.feature, {
-           fillOpacity: 1,
-           strokeColor: 'black',
-           strokeWeight: 6,
-           zIndex: 2,
-         });
+      map.data.addListener('mouseover', function(event) {
+        var curr = event.feature.getProperty('NAME').toLowerCase().capitalize();
+        // if(curr != lastClicked) {
+          map.data.revertStyle();
+          map.data.overrideStyle(event.feature, {
+             fillOpacity: 1,
+             strokeColor: 'white',
+             strokeWeight: 6,
+             zIndex: 2,
+          });
+        // }
         $("#location-name").text(event.feature.getProperty('NAME').toLowerCase().capitalize());
         $("#location-population").text(event.feature.getProperty('total') + " people");
       });
