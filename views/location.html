@@ -24,10 +24,12 @@
         <div>
           <form class="market-form">
             <p style="font-size: 20px; margin-bottom: -5px;">Data Set</p><br>
-            <ul class="nav nav-pills" id="datapills">
+            <ul class="nav nav-pills top" id="datapills">
               <li class="active"><a href="#" data-toggle="tab" onclick="setAgeFlag();">Age</a></li>
               <li><a href="#" data-toggle="tab" onclick="setRaceFlag();">Race</a></li>
               <li><a href="#" data-toggle="tab" onclick="setGenderFlag()">Gender</a></li>
+            </ul>
+            <ul class="nav nav-pills bottom" id="datapills">
               <li><a href="#" data-toggle="tab" onclick="setMaritalFlag()">Marital Status</a></li>
               <li><a href="#" data-toggle="tab" onclick="setIncomeFlag()">Income</a></li>
               <li><a href="#" data-toggle="tab" onclick="setExpenditureFlag()">Expenditures</a></li>
@@ -49,8 +51,8 @@
       Population
     </div>
     <div class="over-map font-white center">
-      <p id="location-name" style="position: absolute;top: 30%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%); font-size: 20px;">Coastal</p>
-      <p id="location-population" style="position: absolute; top: 70%; left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">75893 people</p>
+      <p id="location-name" style="position: absolute;top: 35%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%); font-size: 20px; line-height: 20px">Coastal</p>
+      <p id="location-population" style="padding-top: 15px;position: absolute; top: 75%; left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">75893 people</p>
     </div>
 
     <!-- Help Modal -->

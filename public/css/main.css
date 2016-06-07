@@ -187,11 +187,21 @@ hr {
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
     background-color: #E8AE20 !important;
+    color: #fff !important;
 
+}
+
+.nav-pills > li > a:hover {
+	color: #000 !important;
 }
 
 .nav > li > a {
 	font-weight: 100;
+}
+
+.nav-pills > li {
+	margin-right: 5px;
+	margin-bottom: 10px;
 }
 
 #y-axis-title {
@@ -222,4 +232,12 @@ hr {
 #datapills > li {
 	border: 1px solid;
 	border-radius: 5px;
+}
+
+.top {
+	margin-left: 28%;
+}
+
+.bottom {
+	margin-left: 14%;
 }
