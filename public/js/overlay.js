@@ -840,7 +840,7 @@ function initMap() {
 
       map.data.addListener('mouseover', function(event) {
          var curr = event.feature.getProperty('NAME').toLowerCase().capitalize();
-         if(!selectedRegion) {
+         
            map.data.revertStyle();
            map.data.overrideStyle(event.feature, {
              fillOpacity: 1,
@@ -848,7 +848,7 @@ function initMap() {
              strokeWeight: 6,
              zIndex: 2,
            });
-         }
+         
         $("#location-name").text(event.feature.getProperty('NAME').toLowerCase().capitalize());
         $("#location-population").text(event.feature.getProperty('total') + " people");
       });
@@ -868,8 +868,7 @@ function initMap() {
         //console.log('event', event.feature.getProperty('NAME'));
         //console.log('event-lowercase', event.feature.getProperty('NAME').toLowerCase().capitalize());
 
-        if (selectedRegion != event.feature.getProperty('NAME'))
-        {
+        
           map.data.revertStyle();
           // map.data.overrideStyle(event.feature, {strokeWeight: 8});
           // selectRegion(event.feature.getProperty('NAME'));
@@ -882,9 +881,7 @@ function initMap() {
             strokeWeight: 4,
             zIndex: 2,
           });
-        } else {
-          map.data.revertStyle();
-        }
+        
 
         // lastClicked = event.feature.getProperty('NAME').toLowerCase().capitalize();
         // selectedRegion = event.feature.getProperty('NAME').toLowerCase().capitalize();

@@ -24,16 +24,20 @@
         <div>
           <form class="market-form">
             <p style="font-size: 20px; margin-bottom: -5px;">Data Set</p><br>
-            <ul class="nav nav-pills top" id="datapills">
-              <li class="active"><a href="#" data-toggle="tab" onclick="setAgeFlag();">Age</a></li>
+            <div class="container">
+              <div class="row btn-centered">
+                <div class="col-md-4">
+            <ul class="nav nav-pills" id="datapills">
+              <li class="active"><a id="top" href="#" data-toggle="tab" onclick="setAgeFlag();">Age</a></li>
+              <li><a href="#" data-toggle="tab" onclick="setMaritalFlag()">Marital Status</a></li>
               <li><a href="#" data-toggle="tab" onclick="setRaceFlag();">Race</a></li>
               <li><a href="#" data-toggle="tab" onclick="setGenderFlag()">Gender</a></li>
-            </ul>
-            <ul class="nav nav-pills bottom" id="datapills">
-              <li><a href="#" data-toggle="tab" onclick="setMaritalFlag()">Marital Status</a></li>
               <li><a href="#" data-toggle="tab" onclick="setIncomeFlag()">Income</a></li>
               <li><a href="#" data-toggle="tab" onclick="setExpenditureFlag()">Expenditures</a></li>
             </ul>
+          </div>
+        </div>
+      </div>
           </form>
         </div><br>
 

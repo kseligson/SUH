@@ -234,10 +234,7 @@ hr {
 	border-radius: 5px;
 }
 
-.top {
-	margin-left: 28%;
-}
-
-.bottom {
-	margin-left: 14%;
+.btn-centered {
+	padding-left: 80px;
+	padding-right: 100px;
 }
